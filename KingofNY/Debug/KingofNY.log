@@ -1,0 +1,5 @@
+﻿  Dice.cpp
+c:\users\ishma\source\repos\kingofny\kingofny\dice.cpp(43): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\ishma\source\repos\kingofny\kingofny\dice.cpp(62): warning C4101: 'numOfRolls': unreferenced local variable
+c:\users\ishma\source\repos\kingofny\kingofny\dice.cpp(61): warning C4101: 'numOfDices': unreferenced local variable
+  KingofNY.vcxproj -> C:\Users\ishma\source\repos\KingofNY\Debug\KingofNY.exe
