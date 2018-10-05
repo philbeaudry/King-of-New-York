@@ -11,8 +11,9 @@ public:
 	Dice();
 	string numToValue(int);
 	void firstRoll();
-	void rollSingleDice(int);
-	void rollMultipleDie(int, int);
+	void rollDie(int[],int);
+	void rerollDie();
+	void displayDiceValues();
 	void resetDice();
 	void diceDriver();
 	

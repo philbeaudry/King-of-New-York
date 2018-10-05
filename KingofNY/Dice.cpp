@@ -6,11 +6,19 @@
 #include <cstdlib>
 #include <ctime>
 
+
 using namespace std;
 
 Dice::Dice()
 {
 }
+
+void Dice::displayDiceValues() {
+	for (int i = 0; i < 6; i++) {
+		cout << "Dice #" << i + 1 << ": " << valueArray[i] << endl;
+		cout << endl;
+	}
+};
 
 string Dice::numToValue(int num) {
 	int result = num;
@@ -45,25 +53,95 @@ void Dice::firstRoll() {
 		int random = (rand() % 6) + 1;
 		valueArray[i] = numToValue(random);
 		cout << endl;
-		cout << "Dice #" << i << ": " << valueArray[i] << endl;
+		cout << "Dice #" << i +1 << ": " << valueArray[i] << endl;
 	}
 }
 
-void Dice:: rollSingleDice(int diceNumber) {
-	valueArray[diceNumber] = "Ouch";
+void Dice:: rollDie(int diceNumber[], int arraySize) {
+	srand(time(NULL));
+	for (int i = 0; i < arraySize; i++) {
+		cout << "rerolling dice #" << diceNumber[i] << endl;
+		int random = (rand() % 6) + 1;
+		valueArray[diceNumber[i]] = numToValue(random);
+	}
+	cout << "new dice values are:" << endl;
+	displayDiceValues();
+
 };
 
-void Dice::rollMultipleDie(int, int) {
+void Dice::rerollDie() {
+	int numOfDices = 0 ;
+	int diceSelection;
+	int rerollArray[6];
 
+	cout << "how many die would you like to reroll (1-6)?" << endl;
+	cin >> numOfDices;
+	if (numOfDices == 6) {
+		firstRoll();
+	}
+	else if (numOfDices >= 1 && numOfDices <= 5) {
+		for (int i = 0; i < numOfDices; i++) {
+			cout << "enter a dice position you would like to reroll" << endl;
+			cin >> diceSelection;
+			if (diceSelection < 1 || diceSelection > 6) {
+				cout << "Invalid intput, exiting ";
+			}
+			rerollArray[i] = diceSelection;
+			diceSelection = 0;
+		}
+		rollDie(rerollArray,numOfDices);
+	}
+	else {
+		cout << "Invalid intput, exiting ";
+	}
 }
 
 void Dice::diceDriver() {
 	int numOfDices;
-	int numOfRolls;
+	int numOfRolls = 1;
+	string answer;
+	int diceSelection;
+	int rerollArray[6];
 
 	cout << "1st Roll: rolling dice...";
 	firstRoll();
-	
+	while(numOfRolls < 4){
+		cout << "Would you like to roll again?";
+		cin >> answer;
+
+		if (answer == "yes" || answer == "Yes") {
+			rerollDie();
+			numOfRolls++;
+			/*cout << "how many die would you like to reroll (1-6)?" << endl;
+			cin >> numOfDices;
+			if (numOfDices == 6) {
+				firstRoll();
+			}
+			else if(numOfDices >= 1 && numOfDices <= 5){
+				for (int i = 0; i < numOfDices; i++) {
+					cout << "enter a dice position you would like to reroll";
+					cin >> diceSelection;
+					if (diceSelection < 1 || diceSelection > 6) {
+						cout << "Invalid intput, exiting ";
+					}
+					rerollArray[i] = diceSelection;
+					diceSelection = 0;
+				}
+				rollDie(rerollArray);
+			}
+			else {
+				cout << "Invalid intput, exiting ";
+			}*/
+		}
+		else if (answer == "no" || answer == "No") {
+			cout << "OK! retaining previous roll";
+			break;
+		}
+		else {
+			cout << "Invalid answer, retaining previous roll.";
+			break;
+		}
+	}
 
 	/*cout << "How many dices do you wish to roll? (1-6)";
 	cin >> numOfDices;*/
