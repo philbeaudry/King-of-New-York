@@ -11,17 +11,12 @@ int main()
 {
 	//Dice dice1;
 	//dice1.diceDriver();
-	Player p1;
-	p1.diceValues.diceDriver();
+	Player p1 = Player("John");
+	
+	p1.RollDice();
+	vector <string> test = p1.getDiceValues();
 
-	cout << endl;
-	cout << "displaying test";
-
-	vector <string> test = p1.diceValues.getDiceValues();
-
-	for (unsigned int i = 0; i < test.size(); i++) {
-		cout << test[i] << endl;
-	}
+	p1.ResolveDice();
 	
 }
 	

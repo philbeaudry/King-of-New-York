@@ -6,17 +6,22 @@
 using namespace std;
 class Dice
 {
-public:
-	Dice();
-	vector <string> valueArray;
-	string numToValue(int);
-	void firstRoll();
-	void rollDie(int[],int);
-	void rerollDie();
-	void displayDiceValues();
-	void rerollAll();
-	//void resetDice();
-	void diceDriver();
-	vector <string> getDiceValues();
+	public:
+		Dice();
+		Dice(string);
+		vector <string> valueArray;
+		string numToValue(int);
+		void firstRoll();
+		void rollDie(int[],int);
+		void rerollDie();
+		void displayDiceValues();
+		void rerollAll();
+		//void resetDice();
+		void diceDriver();
+		vector <string> getDiceValues();
+
+	private:
+		string owner;
+
 };
 
