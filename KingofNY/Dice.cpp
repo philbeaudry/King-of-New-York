@@ -9,10 +9,15 @@
 
 using namespace std;
 
-Dice::Dice()
-{
+Dice::Dice(){
+
 }
 
+vector <string> Dice::getDiceValues() {
+	return valueArray;
+}
+
+//Displays current dice values onto screen
 void Dice::displayDiceValues() {
 	for (int i = 0; i < 6; i++) {
 		cout << "Dice #" << i + 1 << ": " << valueArray[i] << endl;
@@ -20,9 +25,10 @@ void Dice::displayDiceValues() {
 	}
 };
 
+//converts numerical value of dice to corresponding value
 string Dice::numToValue(int num) {
 	int result = num;
-	string value = "";
+		string value = "";
 	switch (result)
 	{
 	case 1:
@@ -47,28 +53,39 @@ string Dice::numToValue(int num) {
 	return value;
 }
 
-void Dice::firstRoll() {
+//method to reroll all die
+void Dice::rerollAll() {
 	srand(time(NULL));
-	for (int i = 0; i < 6 ; i++) {
+	for (int i = 0; i < 6; i++) {
 		int random = (rand() % 6) + 1;
 		valueArray[i] = numToValue(random);
+	}
+	displayDiceValues();
+}
+//initial roll of the dice
+void Dice::firstRoll() {
+	for (int i = 0; i < 6 ; i++) {
+		int random = (rand() % 6) + 1;
+		valueArray.push_back(numToValue(random));
 		cout << endl;
 		cout << "Dice #" << i +1 << ": " << valueArray[i] << endl;
 	}
 }
 
+//method to roll specific dies
 void Dice:: rollDie(int diceNumber[], int arraySize) {
 	srand(time(NULL));
 	for (int i = 0; i < arraySize; i++) {
 		cout << "rerolling dice #" << diceNumber[i] << endl;
 		int random = (rand() % 6) + 1;
-		valueArray[diceNumber[i]] = numToValue(random);
+		valueArray[diceNumber[i] - 1] = numToValue(random);
 	}
 	cout << "new dice values are:" << endl;
 	displayDiceValues();
 
 };
 
+//method that handles dice rerolling
 void Dice::rerollDie() {
 	int numOfDices = 0 ;
 	int diceSelection;
@@ -77,7 +94,7 @@ void Dice::rerollDie() {
 	cout << "how many die would you like to reroll (1-6)?" << endl;
 	cin >> numOfDices;
 	if (numOfDices == 6) {
-		firstRoll();
+		rerollAll();
 	}
 	else if (numOfDices >= 1 && numOfDices <= 5) {
 		for (int i = 0; i < numOfDices; i++) {
@@ -96,6 +113,7 @@ void Dice::rerollDie() {
 	}
 }
 
+//method for dice rolling up to 3 times
 void Dice::diceDriver() {
 	int numOfDices;
 	int numOfRolls = 1;
@@ -122,5 +140,6 @@ void Dice::diceDriver() {
 			break;
 		}
 	}
+
 }
 
