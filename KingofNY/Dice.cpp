@@ -112,26 +112,6 @@ void Dice::diceDriver() {
 		if (answer == "yes" || answer == "Yes") {
 			rerollDie();
 			numOfRolls++;
-			/*cout << "how many die would you like to reroll (1-6)?" << endl;
-			cin >> numOfDices;
-			if (numOfDices == 6) {
-				firstRoll();
-			}
-			else if(numOfDices >= 1 && numOfDices <= 5){
-				for (int i = 0; i < numOfDices; i++) {
-					cout << "enter a dice position you would like to reroll";
-					cin >> diceSelection;
-					if (diceSelection < 1 || diceSelection > 6) {
-						cout << "Invalid intput, exiting ";
-					}
-					rerollArray[i] = diceSelection;
-					diceSelection = 0;
-				}
-				rollDie(rerollArray);
-			}
-			else {
-				cout << "Invalid intput, exiting ";
-			}*/
 		}
 		else if (answer == "no" || answer == "No") {
 			cout << "OK! retaining previous roll";
@@ -142,10 +122,5 @@ void Dice::diceDriver() {
 			break;
 		}
 	}
-
-	/*cout << "How many dices do you wish to roll? (1-6)";
-	cin >> numOfDices;*/
-
-
 }
 
