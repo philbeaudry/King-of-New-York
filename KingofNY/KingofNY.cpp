@@ -5,24 +5,37 @@
 #include "Dice.h"
 #include <iostream>
 #include "Player.h"
+#include "Deck.h"
 using namespace std;
 
 int main()
 {
 	//Dice dice1;
 	//dice1.diceDriver();
-	Player p1;
-	p1.diceValues.diceDriver();
+	/*Player p1 = Player("John");
+	
+	p1.RollDice();
+	p1.ResolveDice();
+	*/
+	Deck deck = Deck();
+	deck.generateDeck();
 
-	cout << endl;
-	cout << "displaying test";
-
-	vector <string> test = p1.diceValues.getDiceValues();
+	vector <Card> test = deck.getDeck();
 
 	for (unsigned int i = 0; i < test.size(); i++) {
-		cout << test[i] << endl;
+		string name = test[i].getName();
+		cout << name << endl;
 	}
-	
+
+	deck.shuffle();
+	test = deck.getDeck();
+	cout << "==============================";
+
+	for (unsigned int i = 0; i < test.size(); i++) {
+		string name = test[i].getName();
+		cout << name << endl;
+	}
+
 }
 	
 

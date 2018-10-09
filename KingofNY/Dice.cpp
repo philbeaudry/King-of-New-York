@@ -1,16 +1,16 @@
 #include "pch.h"
 #include "Dice.h"
-#include <iostream>
-#include <string>
-#include <array>
-#include <cstdlib>
-#include <ctime>
+
 
 
 using namespace std;
 
 Dice::Dice(){
+	owner = "";
+}
 
+Dice::Dice(string playerName) {
+	owner = playerName;
 }
 
 vector <string> Dice::getDiceValues() {
@@ -64,6 +64,7 @@ void Dice::rerollAll() {
 }
 //initial roll of the dice
 void Dice::firstRoll() {
+	srand(time(NULL));
 	for (int i = 0; i < 6 ; i++) {
 		int random = (rand() % 6) + 1;
 		valueArray.push_back(numToValue(random));
