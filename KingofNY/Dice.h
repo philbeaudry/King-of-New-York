@@ -1,7 +1,10 @@
 #pragma once
+#include <vector>
+#include <iostream>
 #include <string>
 #include <array>
-#include <vector>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 class Dice

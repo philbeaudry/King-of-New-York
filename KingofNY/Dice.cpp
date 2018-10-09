@@ -1,10 +1,6 @@
 #include "pch.h"
 #include "Dice.h"
-#include <iostream>
-#include <string>
-#include <array>
-#include <cstdlib>
-#include <ctime>
+
 
 
 using namespace std;
