@@ -14,9 +14,6 @@ Deck::~Deck()
 
 void Deck::generateDeck() {
 
-	
-
-	
 	int count = 0;
 	while (cardDeck.size() != Deck::MAX_CARDS)
 	{
