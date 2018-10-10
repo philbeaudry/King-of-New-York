@@ -41,10 +41,6 @@ int main()
 
 	graph.printGraph();
 
-
-	return 0;
-
-
 	Deck deck = Deck();
 	deck.generateDeck();
 
