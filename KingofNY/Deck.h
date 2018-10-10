@@ -1,5 +1,8 @@
 #pragma once
 #include "Card.h"
+#include "Monster.h"
+#include "Token.h"
+#include "Tile.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,12 +27,22 @@ class Deck
 		Card getCard(int);
 		Card drawCard();
 		bool isEmpty();
-		void shuffle();
+		void shuffleDeck();
 		vector<Card> getDeck();
+		void generateMonsters();
+		vector<Monster> getMonsters();
+		void generateTokens();
+		vector<Token> getTokens();
+		void generateTiles();
+		void shuffleTiles();
+		vector<Tile> getTiles();
+
 	private:
 
 		vector<Card> cardDeck;
-
+		vector<Monster> monsters;
+		vector<Token> tokens;
+		vector<Tile> tiles;
 	
 };
 

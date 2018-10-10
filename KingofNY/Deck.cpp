@@ -47,7 +47,7 @@ void Deck::generateDeck() {
 		return cardDeck;
 	}
 
-	void Deck::shuffle() {
+	void Deck::shuffleDeck() {
 		srand(time(NULL));
 		random_shuffle(this->cardDeck.begin(), this->cardDeck.end());
 	}
@@ -63,6 +63,68 @@ void Deck::generateDeck() {
 		cardDeck.erase(cardDeck.begin());
 		return theCard;
 	}
+
+	vector <Monster> Deck::getMonsters() {
+		return monsters;
+	}
+
+	void Deck::generateMonsters()
+	{
+		Monster captainFish = Monster("Captain Fish");
+		Monster kong = Monster("Kong");
+		Monster sheriff = Monster("Sheriff");
+		Monster drakonis = Monster("Drakonis");
+		Monster mantis = Monster("Mantis");
+		Monster rob = Monster("Rob");
+
+		monsters.push_back(captainFish);
+		monsters.push_back(kong);
+		monsters.push_back(sheriff);
+		monsters.push_back(drakonis);
+		monsters.push_back(mantis);
+		monsters.push_back(rob);
+	}
+
+	vector<Token> Deck::getTokens()
+	{
+		return tokens;
+	}
+
+	void Deck::generateTokens() {
+
+		for (int i = 0; i < 13; i++) {
+			tokens.push_back(Token("Web"));
+			tokens.push_back(Token("Jinx"));
+		}
+
+		for (int i = 0; i < 5; i++) {
+			tokens.push_back(Token("Souvenir"));
+		}
+
+		for (int i = 0; i < 15; i++) {
+			tokens.push_back(Token("Carapace"));
+		}
+
+	}
+		void Deck::generateTiles() {
+
+			for (int i = 0; i < 45; i++) {
+				tiles.push_back(Tile("Building",0,0));
+				
+			}
+		}
+	
+
+	vector<Tile> Deck::getTiles()
+	{
+		return tiles;
+	}
+
+	void Deck::shuffleTiles() {
+		srand(time(NULL));
+		random_shuffle(this->tiles.begin(), this->tiles.end());
+	}
+
 
 	/*int Deck::getSize()
 	{
