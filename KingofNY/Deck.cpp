@@ -14,19 +14,9 @@ Deck::~Deck()
 
 void Deck::generateDeck() {
 
-	Card captainFish = Card("Captain Fish");
-	Card kong = Card("Kong");
-	Card sheriff = Card("Sheriff");
-	Card drakonis = Card("Drakonis");
-	Card mantis = Card("Mantis");
-	Card rob = Card("Rob");
+	
 
-	cardDeck.push_back(captainFish);
-	cardDeck.push_back(kong);
-	cardDeck.push_back(sheriff);
-	cardDeck.push_back(drakonis);
-	cardDeck.push_back(mantis);
-	cardDeck.push_back(rob);
+	
 	int count = 0;
 	while (cardDeck.size() != Deck::MAX_CARDS)
 	{
