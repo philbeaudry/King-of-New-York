@@ -27,7 +27,7 @@ int main()
 		cout << name << endl;
 	}
 
-	deck.shuffle();
+	deck.shuffleDeck();
 	test = deck.getDeck();
 	cout << "==============================";
 

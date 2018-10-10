@@ -14,6 +14,8 @@ Deck::~Deck()
 
 void Deck::generateDeck() {
 
+	Card statueOfLiberty = Card("Statue of Liberty");
+	Card superstar = Card("Superstar");
 	int count = 0;
 	while (cardDeck.size() != Deck::MAX_CARDS)
 	{

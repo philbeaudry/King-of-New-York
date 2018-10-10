@@ -18,6 +18,16 @@ Tile::Tile(string state,int durability, int reward)
 
 void Tile::flip() {
 	this->state = "Unit";
+	if (this->durability == 1) {
+		this->type = "Infantry";
+	}
+	else if (this->durability == 2) {
+		this->type = "Jet";
+	}
+	else if (this->durability == 3) {
+		this->type = "Tank";
+
+	
 }
 
 

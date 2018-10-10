@@ -13,6 +13,7 @@ class Tile
 
 	private:
 		string state;
+		string type;
 		int durability;
 		int reward;
 };
