@@ -1,5 +1,6 @@
 #pragma once
 #include "Dice.h"
+#include "Monster.h"
 #include <iostream>
 #include <string>
 #include <array>
@@ -34,7 +35,7 @@ private:
 	vector <string> diceValues;
 	vector <string> tokens;
 	vector <string> cards;
-	Card monsterCard;
+	Monster monsterCard;
 	//vector <Token> tokens;
 	//vector <Region> regions;
 };
