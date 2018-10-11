@@ -16,6 +16,10 @@ Tile::Tile(string state,int durability, int reward)
 	this->reward = 0;
 }
 
+Tile::~Tile()
+{
+}
+
 void Tile::flip() {
 	this->state = "Unit";
 	if (this->durability == 1) {
@@ -27,10 +31,8 @@ void Tile::flip() {
 	else if (this->durability == 3) {
 		this->type = "Tank";
 
-	
+	}
 }
 
 
-Tile::~Tile()
-{
-}
+
