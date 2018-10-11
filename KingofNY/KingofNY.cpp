@@ -15,7 +15,7 @@ int main()
 	Player p1 = Player("John");
 	
 	p1.RollDice();
-	//p1.getDiceValues();
+	p1.getDiceValues();
 	//p1.ResolveDice();
 	
 	

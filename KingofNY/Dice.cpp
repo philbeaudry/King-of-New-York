@@ -109,7 +109,7 @@ void Dice::rerollDie() {
 	}
 	else {
 		for (int i = 0; i < numOfDices; i++) {
-			cout << "Enter a dice position you would like to reroll" << endl;
+			cout << "Enter a dice position you would like to reroll: " << endl;
 			cin >> diceSelection;
 			while (diceSelection < 1 || diceSelection > 6)
 			{
@@ -140,7 +140,7 @@ void Dice::keepDice() {
 	cin >> keepNumber;
 	while (keepNumber > space)
 	{
-		cout << "Invalid Input, you have a maximum of "<< space << " dice to left to keep"<< endl;
+		cout << "Invalid Input, you have a maximum of "<< space << " dice to left to keep: "<< endl;
 		cin >> keepNumber;
 	}
 	if (keepNumber == 6) {
@@ -150,7 +150,7 @@ void Dice::keepDice() {
 	}
 	else{
 		for (int i = 0; i < keepNumber; i++) {
-			cout << "Enter a dice position you would like to keep";
+			cout << "Enter a dice position you would like to keep: ";
 			cin >> keepSelection;
 			while (keepSelection < 1 || keepSelection > 6)
 			{
