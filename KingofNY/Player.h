@@ -8,6 +8,8 @@
 #include <algorithm>
 #include <vector>
 #include <map>
+#include"Card.h"
+
 class Player
 {
 public:

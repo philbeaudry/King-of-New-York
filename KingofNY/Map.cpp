@@ -14,6 +14,7 @@ Node::Node(int id, string name, string info) {
 	this->name = name;
 	this->info = info;
 }
+
 Node::~Node() {}
 
 Graph::Graph(int nbNodes) {
@@ -29,6 +30,7 @@ void Graph::addEdge(Node nodeU, Node nodeV) {
 	adjacency[nodeV.id].push_back(nodeU);
 	adjacency[nodeU.id].push_back(nodeV);
 }
+
 
 void Graph::printGraph()
 {
