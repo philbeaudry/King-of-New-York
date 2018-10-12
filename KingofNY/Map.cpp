@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Map.h"
 
-
+//Create Map object from the file folder past
 Map::Map(string filePath) {
 	this->filePath = filePath;
 }
@@ -11,6 +11,7 @@ Map::~Map() {
 	//cout << "Node deleted" << endl;
 }
 
+//This is the function that creates the map in a graph format
 bool Map::CreateMap() {
 	//Load the map
 	try {
@@ -37,6 +38,7 @@ bool Map::CreateMap() {
 	
 }
 
+//Will retrun the zones has a vector of nodes (zones)
 vector<Node> Map::getZones(json zones) {
 	int size = zones["zones"].size();
 	vector<Node> map;
@@ -64,8 +66,10 @@ vector<Node> Map::getZones(json zones) {
 	return map;
 }
 
+//Default constructor
 Node::Node() {}
 
+//Constructor for a full Node object
 Node::Node(int id, string name, int victoryPoints, int energyCube, bool health, vector<int> connections, bool start) {
 	this->id = id;
 	this->name = name;
@@ -85,6 +89,7 @@ Graph::Graph() {
 	//default constructor
 }
 
+//Constructor for a graph that initialize the size
 Graph::Graph(int nbNodes) {
 	this->nbNodes = nbNodes;
 	adjacency = new list<Node>[nbNodes];
@@ -95,12 +100,13 @@ Graph::~Graph() {
 	//cout << "Graph deleted" << endl;
 }
 
+//Add an edge where to get to the nodeU you need to come from the nodeIdV
 void Graph::addEdge(Node nodeU, int nodeIdV) {
 	adjacency[nodeIdV].push_back(nodeU);
 }
 
+//Retrun a vector of Node with all the Regions
 vector<Node> Graph::getRegions() {
-
 	vector<Node> regions(this->nbNodes);
 
 	for (int i = 0; i < this->nbNodes; i++) {
@@ -109,6 +115,7 @@ vector<Node> Graph::getRegions() {
 	return regions;
 }
 
+//A print function to display all adjacency for each position
 void Graph::printGraph() {
 	for (int i = 0; i < this->nbNodes; ++i) {
 		cout << "Possible movement from the positon: " << getNodeFromId(i).name << endl;
@@ -119,6 +126,7 @@ void Graph::printGraph() {
 	}
 }
 
+//This returns a vector of all the available Regions reachable from the current player's posstion
 vector<Node> Graph::availableRegions(int id) {
 
 	vector<Node> availableRegions;
@@ -141,6 +149,7 @@ vector<Node> Graph::availableRegions(int id) {
 	return availableRegions;
 }
 
+//This return the node for a specific ID
 Node Graph::getNodeFromId(int id) {
 	for (int i = 0; i < this->nbNodes; ++i) {
 		for (Node currentNode : adjacency[i]) {
