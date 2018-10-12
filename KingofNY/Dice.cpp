@@ -138,7 +138,7 @@ void Dice::keepDice() {
 	cout << "How many of these die would you like to keep?";
 	int space = 6 - keepArray.size();
 	cin >> keepNumber;
-	while (keepNumber > space)
+	while (keepNumber > space || keepNumber < 0)
 	{
 		cout << "Invalid Input, you have a maximum of "<< space << " dice to left to keep: "<< endl;
 		cin >> keepNumber;

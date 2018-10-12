@@ -164,9 +164,9 @@ void Player::ResolveDice() {
 	for (int i = 1; i <= values.size(); i++) {
 		cout << "Enter dice option number:";
 		cin >> resolveChoice;
-		while (resolveChoice < 1 || resolveChoice > 6)
+		while (resolveChoice > options.size() || resolveChoice < 0)
 		{
-			cout << "Invalid Input, must be between 1 and 6, please try again." << endl;
+			cout << "Invalid Input, must in option list, please try again." << endl;
 			cin >> resolveChoice;
 		}
 		resolveOrder.push_back(resolveChoice);
