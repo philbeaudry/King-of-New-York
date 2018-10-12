@@ -47,7 +47,7 @@ int main()
 	graph.addEdge(queens, 3);
 	graph.addEdge(queens, 0);
 
-	cout << "here are to posible movement from all positions" << endl;
+	cout << "Here are to possible movements from all positions" << endl;
 	graph.printGraph();
 
 	cout << endl << endl;
