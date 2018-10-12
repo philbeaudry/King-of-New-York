@@ -16,10 +16,12 @@ public:
 	int victoryPoints;
 	int energyCube;
 	bool health;
+	bool start = false;
 	vector<int> connections;
+	int nbPlayers = 0;
 
 	Node();
-	Node(int id, string name, int victoryPoints, int energyCube, bool health, vector<int>);
+	Node(int id, string name, int victoryPoints, int energyCube, bool health, vector<int> , bool start);
 	~Node();
 };
 
@@ -33,6 +35,8 @@ public:
 	~Graph();
 	void addEdge(Node nodeU, int nodeIdV);
 	void printGraph();
+	vector<Node> availableRegions(int id);
+	vector<Node> getRegions();
 	Node getNodeFromId(int id);
 };
 

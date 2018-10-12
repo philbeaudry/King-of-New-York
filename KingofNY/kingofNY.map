@@ -6,7 +6,8 @@
       "victoryPoints": 1,
       "energyCube": 1,
       "health": false,
-      "connection": [ 1, 6, 7, 8, 9 ]
+      "connection": [ 1, 6, 7, 8, 9 ],
+      "start" :  false
     },
     "midtown 2-4": {
       "name": "midtown 2-4",
@@ -14,7 +15,8 @@
       "victoryPoints": 2,
       "energyCube": 1,
       "health": false,
-      "connection": [2, 6, 7, 8, 9 ]
+      "connection": [ 2, 6, 7, 8, 9 ],
+      "start": false
     },
     "upper 2-4": {
       "name": "upper 2-4",
@@ -22,7 +24,8 @@
       "victoryPoints": 2,
       "energyCube": 2,
       "health": false,
-      "connection": [6, 7, 8, 9 ]
+      "connection": [ 6, 7, 8, 9 ],
+      "start": false
     },
     "lower 5-6": {
       "name": "lower 5-6",
@@ -30,7 +33,8 @@
       "victoryPoints": 1,
       "energyCube": 1,
       "health": false,
-      "connection":[4, 6, 7, 8, 9 ]
+      "connection": [ 4, 6, 7, 8, 9 ],
+      "start": false
     },
     "midtown 5-6": {
       "name": "midtown 5-6",
@@ -38,7 +42,8 @@
       "victoryPoints": 2,
       "energyCube": 1,
       "health": false,
-      "connection":[ 5, 6, 7, 8, 9 ]
+      "connection": [ 5, 6, 7, 8, 9 ],
+      "start": false
     },
     "upper 5-6": {
       "name": "upper 5-6",
@@ -46,7 +51,8 @@
       "victoryPoints": 2,
       "energyCube": 2,
       "health": false,
-      "connection": [6, 7, 8, 9 ]
+      "connection": [ 6, 7, 8, 9 ],
+      "start": false
     },
     "Brooklyn": {
       "name": "Brooklyn",
@@ -54,8 +60,8 @@
       "victoryPoints": 0,
       "energyCube": 0,
       "health": true,
-      "connection": [ 0, 3 ],
-      "zones": {}
+      "connection": [ 0, 3, 7, 8, 9 ],
+      "start": true
     },
     "Queens": {
       "name": "Queens",
@@ -63,8 +69,8 @@
       "victoryPoints": 0,
       "energyCube": 0,
       "health": true,
-      "connection": [ 0, 3 ],
-      "zones": {}
+      "connection": [ 0, 3, 6, 8, 9 ],
+      "start": true
     },
     "Bronx": {
       "name": "Bronx",
@@ -72,8 +78,8 @@
       "victoryPoints": 0,
       "energyCube": 0,
       "health": true,
-      "connection": [ 0, 3 ],
-      "zones": {}
+      "connection": [ 0, 3, 6, 7, 9 ],
+      "start": true
     },
     "StatenIsland": {
       "name": "StatenIsland",
@@ -81,8 +87,8 @@
       "victoryPoints": 0,
       "energyCube": 0,
       "health": true,
-      "connection": [0, 3],
-      "zones": {}
+      "connection": [ 0, 3, 6, 7, 8 ],
+      "start": true
     }
   }
 }

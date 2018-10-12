@@ -5,14 +5,16 @@
 Tile::Tile()
 {
 	this->state = "Building";
+	this->type = "";
 	this->durability = 0;
 	this->reward = 0;
 }
 
 //
-Tile::Tile(string state,int durability, int reward)
+Tile::Tile(string state, string type, int durability, int reward)
 {
 	this->state = state;
+	this->type = type;
 	this->durability = durability;
 	this->reward = reward;
 }
@@ -35,6 +37,14 @@ void Tile::flip() {
 		this->type = "Tank";
 
 	}
+}
+
+string Tile::getState() {
+	return this->state;
+}
+
+string Tile::getType() {
+	return this->type;
 }
 
 

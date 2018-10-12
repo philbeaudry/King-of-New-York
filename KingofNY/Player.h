@@ -11,10 +11,22 @@
 #include <algorithm>
 #include <vector>
 #include <map>
+#include "Deck.h"
 #include"Card.h"
+#include "Map.h"
 
 class Player
 {
+private:
+	string playerName;
+	int energyCount;
+	vector <string> diceValues;
+	vector <Card> cards;
+	Monster monsterCard;
+	vector <Token> tokens;
+	Node region;
+	//vector <Region> regions;
+
 public:
 	Player();
 	Player(string);
@@ -27,7 +39,9 @@ public:
 	vector <string> getDiceValues();
 	vector <Card> getCards();
 	Monster getMonster();
-	vector <Token> getTokens();
+	Node getRegion();
+	//for demo purposes
+	vector<Token> getTokens();
 	void resolveValue(string,int);
 	void solveEnergy(int);
 	void solveAttack(int);
@@ -36,13 +50,12 @@ public:
 	void solveCelebrity(int);
 	void solveOuch(int);
 
-private:
-	string playerName;
-	int energyCount;
-	vector <string> diceValues;
-	vector <Card> cards;
-	Monster monsterCard;
-	vector <Token> tokens;
-	//vector <Region> regions;
+	void chooseMonster(Deck deck);
+	void chooseRegion(Map map);
+
+	void addToken(Token token);
+	void move(Map map);
+	bool buyCard(Card Card);
+
 };
 

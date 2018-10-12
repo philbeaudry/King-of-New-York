@@ -28,7 +28,6 @@ bool Map::CreateMap() {
 				this->graph.addEdge(map[map[i].connections[j]], i);
 			}
 		}
-		this->graph.printGraph();
 		return true;
 	}
 	catch (exception e) {
@@ -49,6 +48,7 @@ vector<Node> Map::getZones(json zones) {
 		int victoryPoints = zone["victoryPoints"];
 		int energyCube = zone["energyCube"];
 		bool health = zone["health"];
+		bool start = zone["start"];
 		vector<int> connections;
 
 		int nbOfConnections = zone["connection"].size();
@@ -58,7 +58,7 @@ vector<Node> Map::getZones(json zones) {
 			connections[i] = zone["connection"][i];
 		}
 
-		Node *node = new Node(id, name, victoryPoints, energyCube, health, connections);
+		Node *node = new Node(id, name, victoryPoints, energyCube, health, connections, start);
 		map[id] = *node;
 	}
 	return map;
@@ -66,13 +66,14 @@ vector<Node> Map::getZones(json zones) {
 
 Node::Node() {}
 
-Node::Node(int id, string name, int victoryPoints, int energyCube, bool health, vector<int> connections) {
+Node::Node(int id, string name, int victoryPoints, int energyCube, bool health, vector<int> connections, bool start) {
 	this->id = id;
 	this->name = name;
 	this->victoryPoints = victoryPoints;
 	this->energyCube = energyCube;
 	this->health = health;
 	this->connections = connections;
+	this->start = start;
 }
 
 Node::~Node(){
@@ -98,6 +99,16 @@ void Graph::addEdge(Node nodeU, int nodeIdV) {
 	adjacency[nodeIdV].push_back(nodeU);
 }
 
+vector<Node> Graph::getRegions() {
+
+	vector<Node> regions(this->nbNodes);
+
+	for (int i = 0; i < this->nbNodes; i++) {
+		regions[i] = getNodeFromId(i);
+	}
+	return regions;
+}
+
 void Graph::printGraph() {
 	for (int i = 0; i < this->nbNodes; ++i) {
 		cout << "Possible movement from the positon: " << getNodeFromId(i).name << endl;
@@ -106,6 +117,28 @@ void Graph::printGraph() {
 		}	
 		cout << endl;
 	}
+}
+
+vector<Node> Graph::availableRegions(int id) {
+
+	vector<Node> availableRegions;
+
+	if (getNodeFromId(id).start == false) {
+
+	}
+	for (Node currentNode : adjacency[id]) {
+		if (currentNode.start == false) {
+			if (currentNode.nbPlayers == 0) {
+				availableRegions.clear();
+				availableRegions.push_back(currentNode);
+				return availableRegions;
+			}
+		}
+		else if (currentNode.nbPlayers < 2) {
+			availableRegions.push_back(currentNode);
+		}
+	}
+	return availableRegions;
 }
 
 Node Graph::getNodeFromId(int id) {

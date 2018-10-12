@@ -51,6 +51,10 @@ vector<Token> Player::getTokens()
 	return tokens;
 }
 
+Node Player::getRegion() {
+	return region;
+}
+
 //method that calls various method to handle dice resolution phase
 void Player::resolveValue(string type, int count) {
 	if (type == "Energy") {
@@ -76,7 +80,7 @@ void Player::resolveValue(string type, int count) {
 //increments player's energy count
 void Player::solveEnergy(int count)
 {
-	this->energyCount = this->energyCount + count;
+	this->energyCount += count;
 }
 
 //resolves attack effect
@@ -167,10 +171,107 @@ void Player::ResolveDice() {
 		}
 		resolveOrder.push_back(resolveChoice);
 	}
-	for (int i = 0; i < resolveOrder.size(); i++) {
-		resolveValue(options[resolveOrder[i]],valueCount[options[resolveOrder[i]]]);
+	/*for (int i = 0; i < resolveOrder.size(); i++) {
+		resolveValue(options[resolveOrder[i]], valueCount[options[resolveOrder[i]]]);
+	}*/
+}
+
+void Player::chooseMonster(Deck deck) {
+	vector<Monster> monsters = deck.getMonsters();
+
+	cout << "Choose one of the Monsters from the following options: " << endl;
+
+	int i = 1;
+	for(Monster monster : monsters) {
+		cout << i << " :" << monster.getName() << endl;
+		i++;
 	}
 
-	
+	int monsterChoice;
 
+	cin >> monsterChoice;
+
+	while (monsterChoice > monsters.size() || monsterChoice < 0){
+		cout << "Please choose valid monster from the list: " << endl;
+		cin >> monsterChoice;
+	}
+
+	this->monsterCard = monsters[monsterChoice - 1];
+
+	cout << "You have choosen to play has: " << this->monsterCard.getName() << endl;
 }
+
+void Player::chooseRegion(Map map) {
+
+	vector<Node> regions = map.graph.getRegions();
+
+	cout << "Choose the id of the Region you would like to start at: " << endl;
+
+	int i = 0;
+	for (Node region : regions) {
+		if (region.start != false) {
+			cout << region.id << " :" << region.name << endl;
+		}
+		i++;
+	}
+
+	int regionChoice;
+
+	cin >> regionChoice;
+
+	Node region = map.graph.getNodeFromId(regionChoice);
+
+	while (region.start == false) {
+		cout << "Please choose valid region Id from the list: " << endl;
+		cin >> regionChoice;
+		region = map.graph.getNodeFromId(regionChoice);
+	}
+
+	region.nbPlayers++;
+
+	cout << "You have choosen to start: " << region.name << endl;
+
+	this->region = region;
+}
+
+void Player::addToken(Token token) {
+	this->tokens.push_back(token);
+}
+
+void Player::move(Map map) {
+	vector<Node> positions = map.graph.availableRegions(this->region.id);
+
+	cout << "Please Choose the zone you would like to move too from these" << endl;
+	int i = 0;
+	for (Node node : positions) {
+		cout << i << ": "<< node.name << endl;
+		i++;
+	}
+
+	if (positions.size() == 1) {
+		cout << "You need to move to Manhattan" << endl;
+		this->region = positions[0];
+	}
+	else {
+		int playerChoice;
+		cin >> playerChoice;
+		while (playerChoice < positions.size() || playerChoice > positions.size()) {
+			cout << "enter valied region ID" << endl;
+			cin >> playerChoice;
+		}
+		this->region = positions[playerChoice];
+	}
+}
+
+
+bool Player::buyCard(Card card) {
+	if (this->energyCount - card.getCost() <= 0) {
+		return false;
+	}
+
+	this->energyCount = -card.getCost();
+	this->cards.push_back(card);
+	return true;
+}
+
+

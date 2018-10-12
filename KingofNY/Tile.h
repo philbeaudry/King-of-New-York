@@ -7,9 +7,11 @@ class Tile
 {
 	public:
 		Tile();
-		Tile(string,int,int);
+		Tile(string,string,int,int);
 		~Tile();
 		void flip();
+		string getState();
+		string getType();
 
 	private:
 		string state;

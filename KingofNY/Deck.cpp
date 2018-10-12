@@ -72,7 +72,7 @@ void Deck::generateDeck() {
 	}
 
 	//returns all available monsters
-	vector <Monster> Deck::getMonsters() {
+	vector<Monster> Deck::getMonsters() {
 		return monsters;
 	}
 
@@ -120,9 +120,8 @@ void Deck::generateDeck() {
 
 	//creates generic tiles
 	void Deck::generateTiles() {
-
 		for (int i = 0; i < 45; i++) {
-			tiles.push_back(Tile("Building",0,0));
+			tiles.push_back(Tile("Building", "", 0,0));
 				
 		}
 	}

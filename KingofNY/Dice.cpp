@@ -177,8 +177,12 @@ void Dice::diceDriver() {
 	
 	while(numOfRolls < 4){
 		if (keepArray.size() < 6) {
-			cout << "Would you like to roll again?";
+			cout << "Would you like to roll again (yes, no)?";
 			cin >> answer;
+			while (answer != "yes" && answer != "no" && answer != "Yes" && answer != "No") {
+				cout << "Invalid answer. Please enter yes or no: ";
+				cin >> answer;
+			}
 			if (answer == "yes" || answer == "Yes") {
 				rerollDie();
 				numOfRolls++;

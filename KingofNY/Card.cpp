@@ -20,6 +20,11 @@ string Card::getName() {
 	return this->name;
 }
 
+//returns cost
+int Card::getCost() {
+	return this->cost;
+}
+
 //constructor with name param
 Card::Card(string cardName)
 {
