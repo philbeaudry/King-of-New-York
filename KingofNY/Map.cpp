@@ -3,28 +3,39 @@
 
 
 Map::Map(string filePath) {
-
-	//Load the map
-	ifstream stringJson(filePath);
-	string jsonString((istreambuf_iterator<char>(stringJson)), (istreambuf_iterator<char>()));
-
-	json zones = json::parse(jsonString);
-
-	vector<Node> map = Map::getZones(zones);
-
-	this->graph = Graph(map.size());
-
-	for (int i = 0; i < map.size(); i++) {
-		for (int j = 0; j < map[i].connections.size(); j++) {
-			this->graph.addEdge(map[map[i].connections[j]], i);
-		}
-	}
-	this->graph.printGraph();
+	this->filePath = filePath;
 }
 
 Map::~Map() {
 	// Deconstructor for map
 	//cout << "Node deleted" << endl;
+}
+
+bool Map::CreateMap() {
+	//Load the map
+	try {
+		ifstream stringJson(this->filePath);
+		string jsonString((istreambuf_iterator<char>(stringJson)), (istreambuf_iterator<char>()));
+
+		json zones = json::parse(jsonString);
+
+		vector<Node> map = Map::getZones(zones);
+
+		this->graph = Graph(map.size());
+
+		for (int i = 0; i < map.size(); i++) {
+			for (int j = 0; j < map[i].connections.size(); j++) {
+				this->graph.addEdge(map[map[i].connections[j]], i);
+			}
+		}
+		this->graph.printGraph();
+		return true;
+	}
+	catch (exception e) {
+		cout << "Bad .map file! please try again with a valid Map";
+		return false;
+	}
+	
 }
 
 vector<Node> Map::getZones(json zones) {

@@ -37,10 +37,12 @@ public:
 };
 
 class Map {
+	string filePath;
 public:
 	Graph graph;
 	Map(string mapFile);
 	~Map();
+	bool CreateMap();
 	vector<Node> getZones(json zones);
 };
 

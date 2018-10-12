@@ -53,7 +53,14 @@ int main()
 	cout << endl << endl;
 	//DEMO for part Two
 	cout << "DEMO for Part 2" << endl;
+
+	//Good Map
 	Map map("kingofNY.map");
+	cout << endl << map.CreateMap() << endl;
+
+	//Bad Maps
+	Map Nomap("unexisting.map");
+	cout << endl << Nomap.CreateMap() << endl;
 
 	cout << endl << endl;
 	//Demo for the Deck
