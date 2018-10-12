@@ -1,36 +1,47 @@
 #pragma once
 #include <string>
 #include <list>
+#include <vector>
 #include <iostream>
-
+#include <fstream>
+#include "json.hpp"
 using namespace std;
-
-class Map
-{
-public:
-	Map(string mapFile);
-	~Map();
-};
+using json = nlohmann::json;
 
 class Node {
+
 public:
 	int id;
 	string name;
-	string info;
+	int victoryPoints;
+	int energyCube;
+	bool health;
+	vector<int> connections;
 
-	Node(int id, string name, string info);
+	Node();
+	Node(int id, string name, int victoryPoints, int energyCube, bool health, vector<int>);
 	~Node();
 };
 
 class Graph {
-	int nbNodes; //number of nodes
+	int nbNodes; //number of node
 	list<Node> *adjacency; //Pointer to an array of adjacency
 
 public:
+	Graph();
 	Graph(int nbNodes);
 	~Graph();
-	void addEdge(Node nodeU, Node nodeV);
+	void addEdge(Node nodeU, int nodeIdV);
 	void printGraph();
+	Node getNodeFromId(int id);
+};
+
+class Map {
+public:
+	Graph graph;
+	Map(string mapFile);
+	~Map();
+	vector<Node> getZones(json zones);
 };
 
 

@@ -7,8 +7,6 @@
 #include "Player.h"
 #include "Deck.h"
 #include "Map.h"
-#include <fstream>
-
 
 using namespace std;
 
@@ -22,34 +20,44 @@ int main()
 	p1.ResolveDice();
 	*/
 
-	ifstream board("board.map.json");
-	string jsonString((std::istreambuf_iterator<char>(board)),
-		(std::istreambuf_iterator<char>()));
-
-	cout << jsonString << endl;
-
-	//To DEMO the Graph and node class 
-	int  nodes; 
+	//DEMO the Graph and node class  
+	cout << "DEMO for Part 1" << endl;
 	Graph graph(5);
 
-	Node Manhattan = Node(0, "Manathan", "info");
-	Node Brooklyn = Node(1, "Brooklyn", "info");
-	Node Queens = Node(2, "Queens", "info");
-	Node Bronx = Node(3, "Bronx", "info");
-	Node StatenIsland = Node(4, "StatenIsland", "info");
+	vector<int> connections;
 
-	graph.addEdge(Manhattan, Brooklyn);
-	graph.addEdge(Manhattan, Queens);
-	graph.addEdge(Manhattan, Bronx);
-	graph.addEdge(Manhattan, StatenIsland);
-	graph.addEdge(StatenIsland, Brooklyn);
-	graph.addEdge(Bronx, Queens);
-	graph.addEdge(Queens, Brooklyn);
+	Node manhattan = Node(0, "manathan", 0, 0, false, connections);
+	Node brooklyn = Node(1, "brooklyn", 0, 0, false, connections);
+	Node queens = Node(2, "queens", 0, 0, false, connections);
+	Node bronx = Node(3, "bronx", 0, 0, false, connections);
+	Node statenisland = Node(4, "statenisland", 0, 0, false, connections);
 
-	cout << "Here are to posible movement from all positions \n";
+	//Interpret: To get to Manhattan, I can come from id: 1 (brooklyn)
+	graph.addEdge(manhattan, 1);
+	graph.addEdge(manhattan, 2);
+	graph.addEdge(manhattan, 3);
+	graph.addEdge(manhattan, 4);
+	graph.addEdge(statenisland, 1);
+	graph.addEdge(statenisland, 0);
+	graph.addEdge(brooklyn, 4);
+	graph.addEdge(brooklyn, 2);
+	graph.addEdge(brooklyn, 0);
+	graph.addEdge(bronx, 2);
+	graph.addEdge(bronx, 0);
+	graph.addEdge(queens, 3);
+	graph.addEdge(queens, 0);
 
+	cout << "here are to posible movement from all positions" << endl;
 	graph.printGraph();
 
+	cout << endl << endl;
+	//DEMO for part Two
+	cout << "DEMO for Part 2" << endl;
+	Map map("kingofNY.map");
+
+	cout << endl << endl;
+	//Demo for the Deck
+	cout << "DEMO for Part 3" << endl;
 	Deck deck = Deck();
 	deck.generateDeck();
 
