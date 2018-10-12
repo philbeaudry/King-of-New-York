@@ -121,7 +121,8 @@ void Deck::generateDeck() {
 	//creates generic tiles
 	void Deck::generateTiles() {
 		for (int i = 0; i < 45; i++) {
-			tiles.push_back(Tile("Building", "", 0,0));
+			string name = "Building" + to_string(i);
+			tiles.push_back(Tile(name, "", 0,0));
 				
 		}
 	}
