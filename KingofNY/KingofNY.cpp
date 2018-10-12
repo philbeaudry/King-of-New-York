@@ -14,9 +14,10 @@ int main()
 {
 	//Dice dice1;
 	//dice1.diceDriver();
-	/*Player p1 = Player("John");
+	Player p1 = Player("John");
 	
 	p1.RollDice();
+  
 	p1.ResolveDice();
 	*/
 
@@ -82,7 +83,11 @@ int main()
 	for (unsigned int i = 0; i < test.size(); i++) {
 		string name = test[i].getName();
 		cout << name << endl;
-	}
+  }
+  s
+	p1.getDiceValues();
+	//p1.ResolveDice();
+	
 
 }
 	

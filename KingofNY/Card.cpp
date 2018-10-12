@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Card.h"
 
+//default constructor
 Card::Card()
 {
 	this->name = "";
@@ -9,14 +10,17 @@ Card::Card()
 	this->howToPlay = "";
 }
 
+//destructor
 Card::~Card()
 {
 }
 
+//returns card name
 string Card::getName() {
 	return this->name;
 }
 
+//constructor with name param
 Card::Card(string cardName)
 {
 	this->name = cardName;
@@ -25,6 +29,7 @@ Card::Card(string cardName)
 	this->howToPlay = "";
 }
 
+//constructor
 Card::Card(string cardName, int cardCost, string cardEffect, string cardHow)
 {
 	this->name = cardName;

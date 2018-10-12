@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "Dice.h"
 
-
-
 using namespace std;
 
 Dice::Dice(){
@@ -14,13 +12,20 @@ Dice::Dice(string playerName) {
 }
 
 vector <string> Dice::getDiceValues() {
-	return valueArray;
+	return keepArray;
 }
 
 //Displays current dice values onto screen
 void Dice::displayDiceValues() {
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < valueArray.size(); i++) {
 		cout << "Dice #" << i + 1 << ": " << valueArray[i] << endl;
+		cout << endl;
+	}
+};
+
+void Dice::displayKeptValues() {
+	for (int i = 0; i < keepArray.size(); i++) {
+		cout << "Dice #" << i + 1 << ": " << keepArray[i] << endl;
 		cout << endl;
 	}
 };
@@ -94,23 +99,66 @@ void Dice::rerollDie() {
 
 	cout << "how many die would you like to reroll (1-6)?" << endl;
 	cin >> numOfDices;
+	while (numOfDices < 1 || numOfDices > 6)
+	{
+		cout << "Invalid Input, must be between 1 and 6" << endl;
+		cin >> numOfDices;
+	}
 	if (numOfDices == 6) {
 		rerollAll();
 	}
-	else if (numOfDices >= 1 && numOfDices <= 5) {
+	else {
 		for (int i = 0; i < numOfDices; i++) {
-			cout << "enter a dice position you would like to reroll" << endl;
+			cout << "Enter a dice position you would like to reroll: " << endl;
 			cin >> diceSelection;
-			if (diceSelection < 1 || diceSelection > 6) {
-				cout << "Invalid intput, exiting ";
+			while (diceSelection < 1 || diceSelection > 6)
+			{
+				cout << "Invalid Input, must be between 1 and 6" << endl;
+				cin >> diceSelection;
 			}
 			rerollArray[i] = diceSelection;
 			diceSelection = 0;
 		}
 		rollDie(rerollArray,numOfDices);
 	}
+}
+
+bool Dice::isFull() {
+	if (this->keepArray.size() == 6) {
+		return true;
+	}
 	else {
-		cout << "Invalid intput, exiting ";
+		return false;
+	}
+}
+
+void Dice::keepDice() {
+	int keepNumber;
+	int keepSelection;
+	cout << "How many of these die would you like to keep?";
+	int space = 6 - keepArray.size();
+	cin >> keepNumber;
+	while (keepNumber > space)
+	{
+		cout << "Invalid Input, you have a maximum of "<< space << " dice to left to keep: "<< endl;
+		cin >> keepNumber;
+	}
+	if (keepNumber == 6) {
+		for (int i = 0; i < 6; i++) {
+			this->keepArray.push_back(valueArray[i]);
+		}
+	}
+	else{
+		for (int i = 0; i < keepNumber; i++) {
+			cout << "Enter a dice position you would like to keep: ";
+			cin >> keepSelection;
+			while (keepSelection < 1 || keepSelection > 6)
+			{
+				cout << "Invalid Input, must be between 1 and 6, please try again." << endl;
+				cin >> keepSelection;
+			}
+			this->keepArray.push_back(valueArray[keepSelection - 1]);
+		}
 	}
 }
 
@@ -124,23 +172,31 @@ void Dice::diceDriver() {
 
 	cout << "1st Roll: rolling dice...";
 	firstRoll();
+	keepDice();
+	displayDiceValues();
+	
 	while(numOfRolls < 4){
-		cout << "Would you like to roll again?";
-		cin >> answer;
-
-		if (answer == "yes" || answer == "Yes") {
-			rerollDie();
-			numOfRolls++;
-		}
-		else if (answer == "no" || answer == "No") {
-			cout << "OK! retaining previous roll";
-			break;
+		if (keepArray.size() < 6) {
+			cout << "Would you like to roll again?";
+			cin >> answer;
+			if (answer == "yes" || answer == "Yes") {
+				rerollDie();
+				numOfRolls++;
+				keepDice();
+			}
+			else if (answer == "no" || answer == "No") {
+				cout << "OK! retaining previous roll";
+				break;
+			}
+			else {
+				cout << "Invalid answer, retaining previous roll.";
+				break;
+			}
 		}
 		else {
-			cout << "Invalid answer, retaining previous roll.";
+			cout << "You have kept the maximum amount of dice for this turn!" << endl;
 			break;
 		}
 	}
-
 }
 

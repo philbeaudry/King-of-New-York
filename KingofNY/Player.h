@@ -1,5 +1,8 @@
 #pragma once
 #include "Dice.h"
+#include "Monster.h"
+#include "Card.h"
+#include "Token.h"
 #include <iostream>
 #include <string>
 #include <array>
@@ -22,6 +25,9 @@ public:
 	void Move();
 	Dice dice;
 	vector <string> getDiceValues();
+	vector <Card> getCards();
+	Monster getMonster();
+	vector <Token> getTokens();
 	void resolveValue(string,int);
 	void solveEnergy(int);
 	void solveAttack(int);
@@ -34,10 +40,9 @@ private:
 	string playerName;
 	int energyCount;
 	vector <string> diceValues;
-	vector <string> tokens;
-	vector <string> cards;
-	Card monsterCard;
-	//vector <Token> tokens;
+	vector <Card> cards;
+	Monster monsterCard;
+	vector <Token> tokens;
 	//vector <Region> regions;
 };
 
