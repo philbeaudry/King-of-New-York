@@ -19,7 +19,6 @@ int main()
 	p1.RollDice();
   
 	p1.ResolveDice();
-	*/
 
 	//DEMO the Graph and node class  
 	cout << "DEMO for Part 1" << endl;
@@ -76,7 +75,7 @@ int main()
 		cout << name << endl;
 	}
 
-	deck.shuffle();
+	//deck.shuffle();
 	test = deck.getDeck();
 	cout << "==============================";
 
@@ -84,7 +83,7 @@ int main()
 		string name = test[i].getName();
 		cout << name << endl;
   }
-  s
+ 
 	p1.getDiceValues();
 	//p1.ResolveDice();
 	
