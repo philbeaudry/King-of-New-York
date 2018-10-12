@@ -31,3 +31,4 @@
 *.out
 *.app
 /.vs/KingofNY/v15
+/x64/Debug
