@@ -154,6 +154,8 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Dice.h" />
+    <ClInclude Include="json.hpp" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
@@ -165,6 +167,7 @@
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="KingofNY.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -176,7 +179,14 @@
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="kingofNY.map" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

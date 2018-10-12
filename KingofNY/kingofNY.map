@@ -1,0 +1,88 @@
+{
+  "zones": {
+    "lower 2-4": {
+      "name": "lower 2-4",
+      "id": 0,
+      "victoryPoints": 1,
+      "energyCube": 1,
+      "health": false,
+      "connection": [ 1, 6, 7, 8, 9 ]
+    },
+    "midtown 2-4": {
+      "name": "midtown 2-4",
+      "id": 1,
+      "victoryPoints": 2,
+      "energyCube": 1,
+      "health": false,
+      "connection": [2, 6, 7, 8, 9 ]
+    },
+    "upper 2-4": {
+      "name": "upper 2-4",
+      "id": 2,
+      "victoryPoints": 2,
+      "energyCube": 2,
+      "health": false,
+      "connection": [6, 7, 8, 9 ]
+    },
+    "lower 5-6": {
+      "name": "lower 5-6",
+      "id": 3,
+      "victoryPoints": 1,
+      "energyCube": 1,
+      "health": false,
+      "connection":[4, 6, 7, 8, 9 ]
+    },
+    "midtown 5-6": {
+      "name": "midtown 5-6",
+      "id": 4,
+      "victoryPoints": 2,
+      "energyCube": 1,
+      "health": false,
+      "connection":[ 5, 6, 7, 8, 9 ]
+    },
+    "upper 5-6": {
+      "name": "upper 5-6",
+      "id": 5,
+      "victoryPoints": 2,
+      "energyCube": 2,
+      "health": false,
+      "connection": [6, 7, 8, 9 ]
+    },
+    "Brooklyn": {
+      "name": "Brooklyn",
+      "id": 6,
+      "victoryPoints": 0,
+      "energyCube": 0,
+      "health": true,
+      "connection": [ 0, 3 ],
+      "zones": {}
+    },
+    "Queens": {
+      "name": "Queens",
+      "id": 7,
+      "victoryPoints": 0,
+      "energyCube": 0,
+      "health": true,
+      "connection": [ 0, 3 ],
+      "zones": {}
+    },
+    "Bronx": {
+      "name": "Bronx",
+      "id": 8,
+      "victoryPoints": 0,
+      "energyCube": 0,
+      "health": true,
+      "connection": [ 0, 3 ],
+      "zones": {}
+    },
+    "StatenIsland": {
+      "name": "StatenIsland",
+      "id": 9,
+      "victoryPoints": 0,
+      "energyCube": 0,
+      "health": true,
+      "connection": [0, 3],
+      "zones": {}
+    }
+  }
+}
