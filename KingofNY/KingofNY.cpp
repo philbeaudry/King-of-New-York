@@ -83,7 +83,7 @@ int main()
 	//DEMO PART 4
 	cout << "******************** DEMO for Part 4" << endl;
 	Deck MainDeck;
-
+	MainDeck.generateDeck();
 	MainDeck.generateMonsters();
 	MainDeck.generateTokens();
 	MainDeck.generateTiles();
