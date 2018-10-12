@@ -12,29 +12,13 @@ int main()
 {
 	//Dice dice1;
 	//dice1.diceDriver();
-	/*Player p1 = Player("John");
+	Player p1 = Player("John");
 	
 	p1.RollDice();
-	p1.ResolveDice();
-	*/
-	Deck deck = Deck();
-	deck.generateDeck();
-
-	vector <Card> test = deck.getDeck();
-
-	for (unsigned int i = 0; i < test.size(); i++) {
-		string name = test[i].getName();
-		cout << name << endl;
-	}
-
-	deck.shuffle();
-	test = deck.getDeck();
-	cout << "==============================";
-
-	for (unsigned int i = 0; i < test.size(); i++) {
-		string name = test[i].getName();
-		cout << name << endl;
-	}
+	p1.getDiceValues();
+	//p1.ResolveDice();
+	
+	
 
 }
 	
