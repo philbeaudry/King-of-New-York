@@ -7,11 +7,22 @@
 #include "Player.h"
 #include "Deck.h"
 #include "Map.h"
+#include "GameDriver.h"
 
 using namespace std;
 
-int main()
-{
+int main() {
+
+	GameDriver gameDriver;
+
+	gameDriver.selectMap("kingofNY.map");
+	gameDriver.loadPlayers();
+	gameDriver.printPlayers();
+	gameDriver.determineOrder();
+
+	string hello;
+	cin >> hello;
+	return 0;
 	//DEMO PART 1 the Graph and node class  
 	cout << "******************** DEMO for Part 1" << endl;
 	Graph graph(5);
