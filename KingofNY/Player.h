@@ -20,18 +20,22 @@ class Player
 private:
 	string playerName;
 	int energyCount;
+	bool superstar;
 	vector <string> diceValues;
 	vector <Card> cards;
-	Monster monsterCard;
 	vector <Token> tokens;
 	Node region;
 	//vector <Region> regions;
 
 public:
+	Monster monsterCard;
 	Player();
 	Player(string);
 	~Player();
 	string getName();
+	int getEnergy();
+	bool hasSuperstar();
+	void setSuperStar(string change);
 	void RollDice();
 	void ResolveDice();
 	void Move();
@@ -55,7 +59,9 @@ public:
 
 	void addToken(Token token);
 	void move(Map map);
-	bool buyCard(Card Card);
-
+	void buyCards(Deck deck);
+	void buyCard(Card Card);
+	void buyDiscard(Deck deck);
+	void discardCards(Deck deck);
 };
 

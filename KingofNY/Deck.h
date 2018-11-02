@@ -25,7 +25,7 @@ class Deck
 		void removeCard(int);
 		int getSize();
 		Card getCard(int);
-		Card drawCard();
+		void drawCard();
 		bool isEmpty();
 		void shuffleDeck();
 		vector<Card> getDeck();
@@ -36,6 +36,7 @@ class Deck
 		void generateTiles();
 		void shuffleTiles();
 		vector<Tile> getTiles();
+		vector<Card> availCards;
 
 	private:
 

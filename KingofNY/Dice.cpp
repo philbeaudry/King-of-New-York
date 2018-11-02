@@ -180,7 +180,7 @@ void Dice::diceDriver() {
 	keepDice();
 	displayDiceValues();
 	
-	while(numOfRolls < 4){
+	while(numOfRolls < 3){
 		if (keepArray.size() < 6) {
 			cout << "Would you like to roll again (yes, no)?";
 			cin >> answer;
