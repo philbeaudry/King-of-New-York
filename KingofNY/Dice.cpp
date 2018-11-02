@@ -15,6 +15,11 @@ vector <string> Dice::getDiceValues() {
 	return keepArray;
 }
 
+vector<string> Dice::getValues()
+{
+	return valueArray;
+}
+
 //Displays current dice values onto screen
 void Dice::displayDiceValues() {
 	for (int i = 0; i < valueArray.size(); i++) {

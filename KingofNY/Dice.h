@@ -26,6 +26,7 @@ class Dice
 		//void resetDice();
 		void diceDriver();
 		vector <string> getDiceValues();
+		vector <string> getValues();
 		bool isFull();
 
 	private:

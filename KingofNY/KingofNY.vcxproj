@@ -154,6 +154,7 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Dice.h" />
+    <ClInclude Include="GameDriver.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Monster.h" />
@@ -166,6 +167,7 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Dice.cpp" />
+    <ClCompile Include="GameDriver.cpp" />
     <ClCompile Include="KingofNY.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Monster.cpp" />

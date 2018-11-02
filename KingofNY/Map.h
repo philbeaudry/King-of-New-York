@@ -27,6 +27,7 @@ public:
 
 class Graph {
 	int nbNodes; //number of node
+	int nbOfplayersInManhattan = 0;
 	list<Node> *adjacency; //Pointer to an array of adjacency
 
 public:
