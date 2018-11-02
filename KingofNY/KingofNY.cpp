@@ -20,6 +20,28 @@ int main() {
 	gameDriver.printPlayers();
 	gameDriver.determineOrder();
 
+	//Main game loop
+	bool activeGame = true;
+	while (activeGame) {
+		//for each player
+		for (int i = 0; i < 6; i++) {
+			//1 roll the dice
+			
+			//2 resolve the dice
+
+			//3 move
+
+			//4 buy card
+
+			//5 turn
+			//if 20 vicotry points
+			activeGame = false;
+		}
+
+		//nunber of players = 1
+		activeGame = false;
+	}
+
 	string hello;
 	cin >> hello;
 	return 0;
