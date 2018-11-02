@@ -35,12 +35,11 @@ Card::Card(string cardName)
 }
 
 //constructor
-Card::Card(string cardName, int cardCost, string cardEffect, string cardHow)
+Card::Card(string cardName, int cardCost, string cardEffect)
 {
 	this->name = cardName;
 	this->cost = cardCost;
 	this->effect = cardEffect;
-	this->howToPlay = cardHow;
 }
 
 

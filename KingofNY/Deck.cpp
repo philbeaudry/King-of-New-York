@@ -15,15 +15,37 @@ Deck::~Deck()
 //generates a generic card deck
 void Deck::generateDeck() {
 
-	Card statueOfLiberty = Card("Statue of Liberty");
-	Card superstar = Card("Superstar");
-	int count = 0;
+	Card violentStar = Card("Violent Star",3,"keep");
+	cardDeck.push_back(violentStar);
+	Card sharpShooter = Card("Sharp Shooter", 4, "keep");
+	cardDeck.push_back(sharpShooter);
+	Card otherWorld = Card("Of Another World", 6, "keep");
+	cardDeck.push_back(otherWorld);
+	Card extraHead = Card("Extra Head", 7, "keep");
+	cardDeck.push_back(extraHead);
+	Card egoTrap = Card("Ego Trap", 3, "keep");
+	cardDeck.push_back(egoTrap);
+	Card hailingCabs = Card("Hailing Cabs", 5, "keep");
+	cardDeck.push_back(hailingCabs);
+	Card nextStage = Card("Next Stage", 4, "discard");
+	cardDeck.push_back(nextStage);
+	Card powerSub = Card("Power Substation", 5, "discard");
+	cardDeck.push_back(powerSub);
+	Card generalEllis = Card("General Ellis", 5, "discard");
+	cardDeck.push_back(generalEllis);
+	Card nyMarathon = Card("New York Marathon", 6, "discard");
+	cardDeck.push_back(nyMarathon);
+	Card airFroceOne = Card("Air Force One", 6, "discard");
+	cardDeck.push_back(airFroceOne);
+	Card subway = Card("Subway", 10, "discard");
+	cardDeck.push_back(subway);
+	/*int count = 0;
 	while (cardDeck.size() != Deck::MAX_CARDS)
 	{
 		string name = "Card" + to_string(count);
 		cardDeck.push_back(Card(name));
 		count++;
-	}
+	}*/
 
 }
 

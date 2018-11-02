@@ -5,10 +5,14 @@
 Monster::Monster()
 {
 	this->name = "";
+	this->lifePoints = 10;
+	this->victoryPoints = 0;
 }
 
 Monster::Monster(string monsterName) {
 	this->name = monsterName;
+	this->lifePoints = 10;
+	this->victoryPoints = 0;
 }
 
 Monster::~Monster()
@@ -33,7 +37,7 @@ int Monster::getlifePoints()
 void Monster::modifyLifePoints(string change, int amount)
 {
 	if (change == "increase") {
-		this->lifePoints = this->lifePoints + amount;
+		this->lifePoints +=  amount;
 	}
 	else if (change == "decrease") {
 		this->lifePoints = this->lifePoints - amount;

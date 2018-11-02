@@ -10,11 +10,33 @@ Player::Player(){
 //constructor
 Player::Player(string name) {
 	playerName = name;
+	energyCount = 0;
+	superstar = false;
 }
 
 //returns player name
 string Player::getName() {
 	return playerName;
+}
+
+int Player::getEnergy()
+{
+	return this->energyCount;
+}
+
+bool Player::hasSuperstar()
+{
+	return superstar;
+}
+
+void Player::setSuperStar(string change)
+{
+	if (change == "truse") {
+		this->superstar = true;
+	}
+	else if (change == "false") {
+		this->superstar = false;
+	}
 }
 
 //destructor
@@ -96,11 +118,34 @@ void Player::solveDestruction(int count)
 //resolves heal effect
 void Player::solveHeal(int count)
 {
+	int HP = this->getMonster().getlifePoints();
+	if (HP >= 10) {
+		cout << "Your monster has already the maximum amount of health points!";
+	}
+	else {
+		this->monsterCard.modifyLifePoints("increase",count);
+		int HP2 = this->getMonster().getlifePoints();
+		cout << "Your monster now has " << HP2 << " health points!";
+	}
 }
 
 //resolves celebrity effect
 void Player::solveCelebrity(int count)
 {
+	int surplus = count - 3;
+
+	if (this->hasSuperstar() == true) {
+			this->monsterCard.modifyVictoryPoints("increase", surplus);
+	}
+	else if (count < 3) {
+		cout << "You have rolled less than 3 Celebrity dice, nothing happens!";
+	}
+	else if (count >= 3){
+		if (this->hasSuperstar() == false) {
+			this->setSuperStar("true");
+				this->monsterCard.modifyVictoryPoints("increase", surplus);
+		}
+	}
 }
 
 //resolves ouch effect
@@ -171,9 +216,9 @@ void Player::ResolveDice() {
 		}
 		resolveOrder.push_back(resolveChoice);
 	}
-	/*for (int i = 0; i < resolveOrder.size(); i++) {
+	for (int i = 0; i < resolveOrder.size(); i++) {
 		resolveValue(options[resolveOrder[i]], valueCount[options[resolveOrder[i]]]);
-	}*/
+	}
 }
 
 void Player::chooseMonster(Deck deck) {

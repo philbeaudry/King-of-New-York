@@ -9,7 +9,7 @@ class Card
 	public:
 		Card();
 		Card(string);
-		Card(string, int, string, string);
+		Card(string, int, string);
 		string getName();
 		void setName();
 		int getCost();
