@@ -67,9 +67,14 @@ void Deck::generateDeck() {
 	}
 
 	//removes card at given index
-	void Deck::removeCard(int i)
+	void Deck::removeTop()
 	{
 		availCards.pop_back();
+	}
+
+	void Deck::removeCard(int j)
+	{
+		availCards.erase(availCards.begin() + j);
 	}
 
 	//returns deck

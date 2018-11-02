@@ -60,8 +60,8 @@ public:
 	void addToken(Token token);
 	void move(Map map);
 	void buyCards(Deck deck);
-	void buyCard(Card Card);
+	void buyCard(Deck deck, Card card, int i);
 	void buyDiscard(Deck deck);
-	void discardCards(Deck deck);
+	void discardCards(Deck & deck);
 };
 

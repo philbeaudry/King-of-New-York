@@ -344,12 +344,14 @@ void Player::buyCards(Deck deck)
 	
 }
 
-void Player::buyCard(Card card) {
+void Player::buyCard(Deck deck, Card card,int i) {
 	if (this->getEnergy() - card.getCost() < 0) {
 		cout << "You do not have enough energy to buy this card!";
 	}
 	else {
 		this->energyCount = -card.getCost();
+		deck.removeCard(i);
+		deck.drawCard();
 		this->cards.push_back(card);
 	}
 }
@@ -377,7 +379,7 @@ void Player::buyDiscard(Deck deck)
 			cout << "Invalid Input, must be between 1 and 3, please try again." << endl;
 			cin >> cardSelect;
 		}
-		buyCard(deck.availCards[cardSelect - 1]);
+		buyCard(deck, deck.availCards[cardSelect - 1], cardSelect - 1);
 	}
 	else if (buyDisc == 2) {
 		cout << "OK! Replacing available cards with 3 new ones." << endl;
@@ -385,19 +387,18 @@ void Player::buyDiscard(Deck deck)
 	}
 }
 
-void Player::discardCards(Deck deck)
+void Player::discardCards(Deck &deck)
 {
 	if (this->getEnergy() < 2) {
 		cout << "You do not have enough energy to discard cards!" << endl;
 	}
 	else if (this->getEnergy() >= 2) {
 		for (int i = 0; i < 3; i++) {
-			deck.removeCard(i);
+			deck.removeTop();
 		}
 		for (int i = 0; i < 3; i++) {
 			deck.drawCard();
 		}
-		
 		cout << "Here are the new cards that are available" << endl;
 		for (int i = 0; i < deck.availCards.size(); i++) {
 			cout << "Card " << i + 1<< ":" << deck.availCards[i].getName() << endl;

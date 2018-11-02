@@ -23,6 +23,7 @@ class Deck
 		void generateDeck();
 		void addCard(Card);
 		void removeCard(int);
+		void removeTop();
 		int getSize();
 		Card getCard(int);
 		void drawCard();
