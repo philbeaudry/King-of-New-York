@@ -14,13 +14,18 @@ int main()
 {
 
 	Player player;
-	Monster captainFish = Monster("Captain Fish");
+	Deck deck;
+	
+	deck.generateDeck();
+
+	player.buyCards(deck);
+	/*Monster captainFish = Monster("Captain Fish");
 	player.monsterCard = captainFish;
 
 	player.RollDice();
 	player.ResolveDice();
 	
-	cout << player.monsterCard.getVictoryPoints();
+	cout << player.monsterCard.getVictoryPoints();*/
 
 	////DEMO PART 1 the Graph and node class  
 	//cout << "******************** DEMO for Part 1" << endl;

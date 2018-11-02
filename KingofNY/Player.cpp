@@ -5,12 +5,13 @@
 //default constructor
 Player::Player(){
 	playerName = "";
+	energyCount = 50;
 }
 
 //constructor
 Player::Player(string name) {
 	playerName = name;
-	energyCount = 0;
+	energyCount = 50;
 	superstar = false;
 }
 
@@ -308,15 +309,101 @@ void Player::move(Map map) {
 	}
 }
 
-
-bool Player::buyCard(Card card) {
-	if (this->energyCount - card.getCost() <= 0) {
-		return false;
+void Player::buyCards(Deck deck)
+{
+	string answer;
+	string againAsnwer;
+	bool goAgain = true;
+	cout << "Do you wish to buy a card?";
+	cin >> answer;
+	while (answer != "yes" && answer != "no" && answer != "Yes" && answer != "No") {
+		cout << "Invalid answer. Please enter yes or no: ";
+		cin >> answer;
 	}
+	if (answer == "yes" || answer == "Yes") {
+		while (goAgain == true) {
+			buyDiscard(deck);
+			cout << "Would you like to go again?" << endl;
+			cin >> againAsnwer;
+			while (againAsnwer != "yes" && againAsnwer != "no" && againAsnwer != "Yes" && againAsnwer != "No") {
+				cout << "Invalid answer. Please enter yes or no: ";
+				cin >> againAsnwer;
+			}
+			if (againAsnwer == "yes" || againAsnwer == "Yes") {
+				goAgain = true;
+			}
+			else {
+				cout << "okay ending turn!";
+				goAgain = false;
+			}
+		}
+	}
+	else if (answer == "no" || answer == "No") {
+		cout << "Ending Turn!" << endl;
+	}
+	
+}
 
-	this->energyCount = -card.getCost();
-	this->cards.push_back(card);
-	return true;
+void Player::buyCard(Card card) {
+	if (this->getEnergy() - card.getCost() < 0) {
+		cout << "You do not have enough energy to buy this card!";
+	}
+	else {
+		this->energyCount = -card.getCost();
+		this->cards.push_back(card);
+	}
+}
+
+void Player::buyDiscard(Deck deck)
+{
+	int buyDisc;
+	int cardSelect;
+	
+	for (int i = 0; i < deck.availCards.size(); i++) {
+		cout << "Card " << i + 1 << ":" << deck.availCards[i].getName() << endl;
+	}
+	cout << "Would you like to buy a card or discard available cards?" << endl;
+	cout << "Press 1 to buy or Press 2 to discard" << endl;
+	cin >> buyDisc;
+	while (buyDisc != 1  &&  buyDisc != 2) {
+		cout << "Invalid answer. Please enter 1 or 2: ";
+		cin >> buyDisc;
+	}
+	if (buyDisc == 1) {
+		cout << "Which card would you like to buy?";
+		cin >> cardSelect;
+		while (cardSelect < 1 || cardSelect > 3)
+		{
+			cout << "Invalid Input, must be between 1 and 3, please try again." << endl;
+			cin >> cardSelect;
+		}
+		buyCard(deck.availCards[cardSelect - 1]);
+	}
+	else if (buyDisc == 2) {
+		cout << "OK! Replacing available cards with 3 new ones." << endl;
+		discardCards(deck);
+	}
+}
+
+void Player::discardCards(Deck deck)
+{
+	if (this->getEnergy() < 2) {
+		cout << "You do not have enough energy to discard cards!" << endl;
+	}
+	else if (this->getEnergy() >= 2) {
+		for (int i = 0; i < 3; i++) {
+			deck.removeCard(i);
+		}
+		for (int i = 0; i < 3; i++) {
+			deck.drawCard();
+		}
+		
+		cout << "Here are the new cards that are available" << endl;
+		for (int i = 0; i < deck.availCards.size(); i++) {
+			cout << "Card " << i + 1<< ":" << deck.availCards[i].getName() << endl;
+		}
+	}
+	this->energyCount -= 2;
 }
 
 

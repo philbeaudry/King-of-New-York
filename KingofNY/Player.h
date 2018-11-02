@@ -23,7 +23,6 @@ private:
 	bool superstar;
 	vector <string> diceValues;
 	vector <Card> cards;
-	
 	vector <Token> tokens;
 	Node region;
 	//vector <Region> regions;
@@ -60,7 +59,9 @@ public:
 
 	void addToken(Token token);
 	void move(Map map);
-	bool buyCard(Card Card);
-
+	void buyCards(Deck deck);
+	void buyCard(Card Card);
+	void buyDiscard(Deck deck);
+	void discardCards(Deck deck);
 };
 

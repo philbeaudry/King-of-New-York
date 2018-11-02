@@ -39,6 +39,11 @@ void Deck::generateDeck() {
 	cardDeck.push_back(airFroceOne);
 	Card subway = Card("Subway", 10, "discard");
 	cardDeck.push_back(subway);
+
+	shuffleDeck();
+	for (int i = 0; i < 3; i++) {
+		drawCard();
+	}
 	/*int count = 0;
 	while (cardDeck.size() != Deck::MAX_CARDS)
 	{
@@ -64,8 +69,7 @@ void Deck::generateDeck() {
 	//removes card at given index
 	void Deck::removeCard(int i)
 	{
-
-		cardDeck.erase(cardDeck.begin() + i);
+		availCards.pop_back();
 	}
 
 	//returns deck
@@ -86,11 +90,11 @@ void Deck::generateDeck() {
 	}
 
 	//returns card at the top of deck
-	Card Deck::drawCard()
+	void Deck::drawCard()
 	{
 		Card theCard = cardDeck.front();
 		cardDeck.erase(cardDeck.begin());
-		return theCard;
+		this->availCards.push_back(theCard);
 	}
 
 	//returns all available monsters
