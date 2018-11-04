@@ -12,7 +12,12 @@
 using namespace std;
 
 int main() {
+	srand(time(NULL));
 
+	//Demo Part 1- Game Start
+	
+	
+	//Demo Part 2- Startup Phase
 	GameDriver gameDriver;
 	//part 1
 	gameDriver.selectMap("kingofNY.map");
@@ -26,36 +31,39 @@ int main() {
 
 	vector<Player> players;
 
-	//Main game loop
-	Map map = gameDriver.getMap();
+	//Demo Part 3-Main Game Loop
+	//bool activeGame = true;
+	//while (activeGame) {
+	//	//for each player
+	//	for (int i = 0; i < 6; i++) {
+	//		//1 roll the dice
+	//		
+	//		//2 resolve the dice
 
-	//map.graph.printGraph();
+	//		//3 move
 
-	bool activeGame = true;
-	while (activeGame) {
-		//for each player
-		for (Player player : players) {
-			//1 roll the dice
-			
-			//2 resolve the dice
+	//		//4 buy card
 
-			//3 move
-			player.move(map);
-			
+	//		//5 turn
+	//		//if 20 vicotry points
+	//		activeGame = false;
+	//	}
 
-			//4 buy card
+	//	//nunber of players = 1
+	//	activeGame = false;
+	//}
 
-			//5 turn
-			//if 20 vicotry points
-		}
 
-		//nunber of players = 1
-	}
+	//Demo Part 6 - Buy Cards
+	/*Player player;
+	Player player2;
+	Deck deck;
 
-	string hello;
-	cin >> hello;
+	player.RollDice();
+	player2.RollDice();
+	deck.generateDeck();
+	player.buyCards(deck);*/
 	return 0;
-	
 }
 	
 

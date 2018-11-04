@@ -17,13 +17,13 @@ class Dice
 		vector<string> keepArray;
 		string numToValue(int);
 		void firstRoll();
+		void startRoll();
 		void rollDie(int[],int);
 		void rerollDie();
 		void displayDiceValues();
 		void displayKeptValues();
 		void rerollAll();
 		void keepDice();
-		//void resetDice();
 		void diceDriver();
 		vector <string> getDiceValues();
 		vector <string> getValues();

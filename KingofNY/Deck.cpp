@@ -67,9 +67,14 @@ void Deck::generateDeck() {
 	}
 
 	//removes card at given index
-	void Deck::removeCard(int i)
+	void Deck::removeTop()
 	{
 		availCards.pop_back();
+	}
+
+	void Deck::removeCard(int j)
+	{
+		availCards.erase(availCards.begin() + j);
 	}
 
 	//returns deck
@@ -92,9 +97,15 @@ void Deck::generateDeck() {
 	//returns card at the top of deck
 	void Deck::drawCard()
 	{
-		Card theCard = cardDeck.front();
-		cardDeck.erase(cardDeck.begin());
-		this->availCards.push_back(theCard);
+		if (cardDeck.empty()) {
+			cout << "No more cards available to draw!";
+		}
+		else {
+			Card theCard = cardDeck.front();
+			cardDeck.erase(cardDeck.begin());
+			this->availCards.push_back(theCard);
+		}
+		
 	}
 
 	//returns all available monsters

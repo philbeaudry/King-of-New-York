@@ -5,6 +5,9 @@
 #include "Dice.h"
 #include <cstdlib>
 #include <ctime>
+#include <map>
+#include <set>
+#include <utility>
 
 using namespace std;
 
@@ -13,6 +16,7 @@ class GameDriver
 public:
 	int nbPlayers;
 	vector<Player> playerArray;
+	vector<Player> orderedPlayerArray;
 	Map map;
 
 	GameDriver();

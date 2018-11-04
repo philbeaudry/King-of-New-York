@@ -47,7 +47,6 @@ bool GameDriver::loadPlayers() {
 		Player player = Player(playerName);
 
 		//TODO assign dice rolling facilities, create a deck of cards, and an empty hand of cards
-
 		this->playerArray[i]  = player;
 	}
 	return true;
@@ -67,19 +66,40 @@ void GameDriver::startup() {
 }
 
 void GameDriver::determineOrder() {
-	srand(time(NULL));
-	random_shuffle(playerArray.begin(), playerArray.end());
-
-	int i = 1;
-	cout << "Here is the order of Turns:" << endl;
-	for (Player player : playerArray) {
-		cout << i << " : " << player.getName() << endl;
-		i++;
+	this->playerArray;
+	map<string, int> order;
+	//6 black dice and the 2 green dice	
+	int nbAttack = 0;
+	for (int i = 0; i < this->playerArray.size(); i++) {
+		nbAttack = 0;
+		cout << endl;
+		cout << "Rolling for " << playerArray[i].getName() << endl;
+		playerArray[i].startRoll();
+		vector<string>temp = playerArray[i].getValues();
+		for (int i = 0; i < temp.size(); i++) {
+			if (temp[i] == "Attack") {
+				nbAttack++;
+			}
+		}
+		cout << "Number of Attack rolled: " << nbAttack << endl;
+		order[playerArray[i].getName()] = nbAttack;
 	}
-}
+    auto cmp = [](const auto &p1, const auto &p2)
+    {
+        return p2.second < p1.second || !(p1.second < p2.second) && p1.first < p2.first;
+    };
 
-vector<Player> GameDriver::getPlayerArray()
-{
-	return this->playerArray;
+    std::set < std::pair<string, size_t>, decltype( cmp )> s(order.begin(), order.end(), cmp);
+
+	cout << endl;
+	cout << "Game will proceed in the following order of turns:" << endl;
+
+    for (const auto &p : s)
+    {
+        std::cout << p.first << " ";
+		Player player = Player(p.first);
+		this->orderedPlayerArray.push_back(player);
+    }
+    std::cout << std::endl;
 }
 
