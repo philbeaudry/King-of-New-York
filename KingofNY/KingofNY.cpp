@@ -12,24 +12,19 @@
 using namespace std;
 
 int main() {
+	srand(time(NULL));
 
-
-	//Demo Part 6 - Buy Cards
-	//Player player;
-	//Deck deck;
-
-	//deck.generateDeck();
-	//player.buyCards(deck);
+	//Demo Part 1- Game Start
 	
-
+	
+	//Demo Part 2- Startup Phase
 	GameDriver gameDriver;
 
 	gameDriver.selectMap("kingofNY.map");
 	gameDriver.loadPlayers();
-	gameDriver.printPlayers();
 	gameDriver.determineOrder();
 
-	////Main game loop
+	//Demo Part 3-Main Game Loop
 	//bool activeGame = true;
 	//while (activeGame) {
 	//	//for each player
@@ -50,6 +45,17 @@ int main() {
 	//	//nunber of players = 1
 	//	activeGame = false;
 	//}
+
+
+	//Demo Part 6 - Buy Cards
+	/*Player player;
+	Player player2;
+	Deck deck;
+
+	player.RollDice();
+	player2.RollDice();
+	deck.generateDeck();
+	player.buyCards(deck);*/
 	return 0;
 
 }

@@ -65,7 +65,6 @@ string Dice::numToValue(int num) {
 
 //method to reroll all die
 void Dice::rerollAll() {
-	srand(time(NULL));
 	for (int i = 0; i < 6; i++) {
 		int random = (rand() % 6) + 1;
 		valueArray[i] = numToValue(random);
@@ -74,17 +73,27 @@ void Dice::rerollAll() {
 }
 //initial roll of the dice
 void Dice::firstRoll() {
+	this->valueArray.clear();
+	this->keepArray.clear();
 	for (int i = 0; i < 6 ; i++) {
 		int random = (rand() % 6) + 1;
-		valueArray.push_back(numToValue(random));
+		this->valueArray.push_back(numToValue(random));
 		cout << endl;
 		cout << "Dice #" << i +1 << ": " << valueArray[i] << endl;
 	}
 }
 
+void Dice::startRoll(){
+	for (int i = 0; i < 8; i++) {
+		int random = (rand() % 6) + 1;
+		this->valueArray.push_back(numToValue(random));
+		cout << endl;
+		cout << "Dice #" << i + 1 << ": " << valueArray[i] << endl;
+	}
+}
+
 //method to roll specific dies
 void Dice:: rollDie(int diceNumber[], int arraySize) {
-	srand(time(NULL));
 	for (int i = 0; i < arraySize; i++) {
 		cout << "rerolling dice #" << diceNumber[i] << endl;
 		int random = (rand() % 6) + 1;

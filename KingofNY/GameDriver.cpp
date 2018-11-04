@@ -36,10 +36,10 @@ bool GameDriver::loadPlayers() {
 
 	for (int i = 0; i < nbPlayers; i++) {
 		cout << "Player " << i << ", what name would you like to use?" << endl;
-		string *playerName = new string();
-		cin >> *playerName;
-		Player *player = new Player(*playerName);
-		this->playerArray[i]  = *player;
+		string playerName;
+		cin >> playerName;
+		Player player =  Player(playerName);
+		this->playerArray[i]  = player;
 	}
 	return true;
 }
@@ -50,20 +50,40 @@ void GameDriver::printPlayers() {
 }
 
 void GameDriver::determineOrder() {
-	srand(time(NULL));
-
-	map<int, int> order;
+	this->playerArray;
+	map<string, int> order;
 	//6 black dice and the 2 green dice	
 	int nbAttack = 0;
-	for (int i = 0; i < nbPlayers; i++) {
+	for (int i = 0; i < this->playerArray.size(); i++) {
 		nbAttack = 0;
-		for (int i = 0; i < 8; i++) {
-			if ((rand() % 6+1) == 1) {
+		cout << endl;
+		cout << "Rolling for " << playerArray[i].getName() << endl;
+		playerArray[i].startRoll();
+		vector<string>temp = playerArray[i].getValues();
+		for (int i = 0; i < temp.size(); i++) {
+			if (temp[i] == "Attack") {
 				nbAttack++;
 			}
 		}
-		order[i] = nbAttack;
+		cout << "Number of Attack rolled: " << nbAttack << endl;
+		order[playerArray[i].getName()] = nbAttack;
 	}
+    auto cmp = [](const auto &p1, const auto &p2)
+    {
+        return p2.second < p1.second || !(p1.second < p2.second) && p1.first < p2.first;
+    };
 
+    std::set < std::pair<string, size_t>, decltype( cmp )> s(order.begin(), order.end(), cmp);
+
+	cout << endl;
+	cout << "Game will proceed in the following order of turns:" << endl;
+
+    for (const auto &p : s)
+    {
+        std::cout << p.first << " ";
+		Player player = Player(p.first);
+		this->orderedPlayerArray.push_back(player);
+    }
+    std::cout << std::endl;
 }
 

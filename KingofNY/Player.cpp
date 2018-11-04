@@ -61,6 +61,15 @@ vector <string> Player::getDiceValues() {
 	return dice.getDiceValues();
 }
 
+
+vector <string> Player::getValues() {
+	return dice.getValues();
+}
+
+void Player::startRoll() {
+	return dice.startRoll();
+}
+
 //returns player cards
 vector<Card> Player::getCards()
 {

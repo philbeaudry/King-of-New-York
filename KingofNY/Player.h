@@ -21,7 +21,6 @@ private:
 	string playerName;
 	int energyCount;
 	bool superstar;
-	vector <string> diceValues;
 	vector <Card> cards;
 	vector <Token> tokens;
 	Node region;
@@ -42,6 +41,8 @@ public:
 	void ResolveDice();
 	void Move();
 	vector <string> getDiceValues();
+	vector <string> getValues();
+	void startRoll();
 	vector <Card> getCards();
 	Monster getMonster();
 	Node getRegion();
