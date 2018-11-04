@@ -25,7 +25,6 @@ private:
 	vector <Card> cards;
 	vector <Token> tokens;
 	Node region;
-	//vector <Region> regions;
 
 public:
 	Monster monsterCard;
@@ -38,7 +37,6 @@ public:
 	void setSuperStar(string change);
 	void RollDice();
 	void ResolveDice();
-	void Move();
 	Dice dice;
 	vector <string> getDiceValues();
 	vector <Card> getCards();
@@ -55,7 +53,7 @@ public:
 	void solveOuch(int);
 
 	void chooseMonster(Deck deck);
-	void chooseRegion(Map map);
+	void chooseRegion(Map &map);
 
 	void addToken(Token token);
 	void move(Map map);

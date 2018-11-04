@@ -27,8 +27,9 @@ public:
 
 class Graph {
 	int nbNodes; //number of node
-	int nbOfplayersInManhattan = 0;
+	int nbOfPlayersInManhattan = 0;
 	list<Node> *adjacency; //Pointer to an array of adjacency
+	vector<int> nbPlayersInZones;
 
 public:
 	Graph();
@@ -39,12 +40,17 @@ public:
 	vector<Node> availableRegions(int id);
 	vector<Node> getRegions();
 	Node getNodeFromId(int id);
+	int getNbOfPlayersInManhattan();
+	void setNbOfPlayersInManhattan(int newNbOfPlayersInManhattan);
+	int getNbOfPlayersInZone(int id);
+	void setNbOfPlayersInZone(int id, int nbPlayers);
 };
 
 class Map {
 	string filePath;
 public:
 	Graph graph;
+	Map();
 	Map(string mapFile);
 	~Map();
 	bool CreateMap();

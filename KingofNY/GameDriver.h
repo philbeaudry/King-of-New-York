@@ -13,21 +13,21 @@ class GameDriver
 public:
 	int nbPlayers;
 	vector<Player> playerArray;
+	Map map;
+
 	GameDriver();
 	~GameDriver();
 
 	bool selectMap(string file);
+	Map getMap();
 
 	bool loadPlayers();
 
 	void printPlayers();
 
-	bool startup();
+	void startup();
 
 	void determineOrder();
 
-	void chooseRegion(Player player);
-
-	void setPieces();
-
+	vector<Player> getPlayerArray();
 };
