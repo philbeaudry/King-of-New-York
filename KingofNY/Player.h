@@ -25,10 +25,12 @@ private:
 	vector <Card> cards;
 	vector <Token> tokens;
 	Node region;
+	Dice dice;
 	//vector <Region> regions;
 
 public:
 	Monster monsterCard;
+	Dice getDice();
 	Player();
 	Player(string);
 	~Player();
@@ -39,7 +41,6 @@ public:
 	void RollDice();
 	void ResolveDice();
 	void Move();
-	Dice dice;
 	vector <string> getDiceValues();
 	vector <Card> getCards();
 	Monster getMonster();
@@ -59,9 +60,9 @@ public:
 
 	void addToken(Token token);
 	void move(Map map);
-	void buyCards(Deck deck);
-	void buyCard(Deck deck, Card card, int i);
-	void buyDiscard(Deck deck);
-	void discardCards(Deck & deck);
+	void buyCards(Deck &deck);
+	void buyCard(Deck &deck, Card card, int i);
+	void buyDiscard(Deck &deck);
+	void discardCards(Deck &deck);
 };
 

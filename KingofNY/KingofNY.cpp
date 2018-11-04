@@ -13,17 +13,21 @@ using namespace std;
 
 int main() {
 
-	Player player;
-	Deck deck;
-	deck.generateDeck();
-	player.buyCards(deck);
 
-	//GameDriver gameDriver;
+	//Demo Part 6 - Buy Cards
+	//Player player;
+	//Deck deck;
 
-	//gameDriver.selectMap("kingofNY.map");
-	//gameDriver.loadPlayers();
-	//gameDriver.printPlayers();
-	//gameDriver.determineOrder();
+	//deck.generateDeck();
+	//player.buyCards(deck);
+	
+
+	GameDriver gameDriver;
+
+	gameDriver.selectMap("kingofNY.map");
+	gameDriver.loadPlayers();
+	gameDriver.printPlayers();
+	gameDriver.determineOrder();
 
 	////Main game loop
 	//bool activeGame = true;

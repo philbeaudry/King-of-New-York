@@ -97,9 +97,15 @@ void Deck::generateDeck() {
 	//returns card at the top of deck
 	void Deck::drawCard()
 	{
-		Card theCard = cardDeck.front();
-		cardDeck.erase(cardDeck.begin());
-		this->availCards.push_back(theCard);
+		if (cardDeck.empty()) {
+			cout << "No more cards available to draw!";
+		}
+		else {
+			Card theCard = cardDeck.front();
+			cardDeck.erase(cardDeck.begin());
+			this->availCards.push_back(theCard);
+		}
+		
 	}
 
 	//returns all available monsters

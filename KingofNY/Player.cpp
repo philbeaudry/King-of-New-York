@@ -2,6 +2,11 @@
 #include "Player.h"
 
 
+Dice Player::getDice()
+{
+	return this->dice;
+}
+
 //default constructor
 Player::Player(){
 	playerName = "";
@@ -309,7 +314,7 @@ void Player::move(Map map) {
 	}
 }
 
-void Player::buyCards(Deck deck)
+void Player::buyCards(Deck &deck)
 {
 	string answer;
 	string againAsnwer;
@@ -340,23 +345,23 @@ void Player::buyCards(Deck deck)
 	}
 	else if (answer == "no" || answer == "No") {
 		cout << "Ending Turn!" << endl;
+		
 	}
-	
 }
 
-void Player::buyCard(Deck deck, Card card,int i) {
+void Player::buyCard(Deck &deck, Card card,int i) {
 	if (this->getEnergy() - card.getCost() < 0) {
 		cout << "You do not have enough energy to buy this card!";
 	}
 	else {
-		this->energyCount = -card.getCost();
+		this->energyCount -= card.getCost();
 		deck.removeCard(i);
 		deck.drawCard();
 		this->cards.push_back(card);
 	}
 }
 
-void Player::buyDiscard(Deck deck)
+void Player::buyDiscard(Deck &deck)
 {
 	int buyDisc;
 	int cardSelect;
