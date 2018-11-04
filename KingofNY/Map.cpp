@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "Map.h"
 
+Map::Map()
+{
+}
+
 //Create Map object from the file folder past
 Map::Map(string filePath) {
 	this->filePath = filePath;
@@ -93,6 +97,12 @@ Graph::Graph() {
 Graph::Graph(int nbNodes) {
 	this->nbNodes = nbNodes;
 	adjacency = new list<Node>[nbNodes];
+
+	//empty all the zones to start
+	nbPlayersInZones.resize(nbNodes);
+	for (int number : nbPlayersInZones) {
+		number = 0;
+	}
 }
 
 Graph::~Graph() {
@@ -118,7 +128,7 @@ vector<Node> Graph::getRegions() {
 //A print function to display all adjacency for each position
 void Graph::printGraph() {
 	for (int i = 0; i < this->nbNodes; ++i) {
-		cout << "Possible movement from the positon: " << getNodeFromId(i).name << endl;
+		cout << "Possible movement from the positon: " << getNodeFromId(i).name  << "nb of players there -> " << this->nbPlayersInZones[i] << endl;
 		for (Node currentNode : adjacency[i]) {
 			cout << " -> " << currentNode.name;
 		}	
@@ -159,6 +169,26 @@ Node Graph::getNodeFromId(int id) {
 		}
 	}
 	return Node();
+}
+
+int Graph::getNbOfPlayersInManhattan()
+{
+	return this->nbOfPlayersInManhattan;
+}
+
+void Graph::setNbOfPlayersInManhattan(int newNbOfPlayersInManhattan)
+{
+	this->nbOfPlayersInManhattan = newNbOfPlayersInManhattan;
+}
+
+int Graph::getNbOfPlayersInZone(int id)
+{
+	return this->nbPlayersInZones[id];
+}
+
+void Graph::setNbOfPlayersInZone(int id, int nbPlayers)
+{
+	this->nbPlayersInZones[id] = nbPlayers;
 }
 
 

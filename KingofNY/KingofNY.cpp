@@ -19,10 +19,17 @@ int main() {
 	
 	//Demo Part 2- Startup Phase
 	GameDriver gameDriver;
-
+	//part 1
 	gameDriver.selectMap("kingofNY.map");
 	gameDriver.loadPlayers();
+	gameDriver.printPlayers();
+
+	//part 2
 	gameDriver.determineOrder();
+	gameDriver.startup();
+
+
+	vector<Player> players;
 
 	//Demo Part 3-Main Game Loop
 	//bool activeGame = true;
@@ -57,7 +64,6 @@ int main() {
 	deck.generateDeck();
 	player.buyCards(deck);*/
 	return 0;
-
 }
 	
 

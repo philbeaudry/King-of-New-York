@@ -236,6 +236,65 @@ void Player::ResolveDice() {
 	}
 }
 
+void Player::move(Map map) {
+
+	this->region;
+	vector<Node> positions = map.graph.availableRegions(this->region.id);
+
+	//if player is in manhattan. (not a starting position)
+	if (!this->region.start) {
+		//if player is upper manhattan, no movement during this turn
+		if (this->region.victoryPoints == 2 || this->region.energyCube == 2) {
+			cout << "You are already at the in upper Manhattan." << endl;
+		}
+		else {
+			//moving to next manhattan zone
+			cout << "Moving to " << positions[0].name << endl;
+			this->region.nbPlayers--;
+			this->region = positions[0];
+			this->region.nbPlayers++;
+		}	
+	}
+	//if there is no one in manhattan, player needs to move into manhattan
+	else if (map.graph.getNbOfPlayersInManhattan() == 0) {
+		cout << endl << "You need to move to Manhattan. New posistion: " << positions[0].name << endl;
+		this->region.nbPlayers--;
+		this->region = positions[0];
+		this->region.nbPlayers++;
+		map.graph.setNbOfPlayersInManhattan(map.graph.getNbOfPlayersInManhattan() + 1);
+	}
+	else {
+		cout << "Would like to move to another borough? (yes or no): " << endl;
+
+		string answer;
+		cin >> answer;
+		while (answer != "yes" && answer != "no" && answer != "Yes" && answer != "No") {
+			cout << "Invalid answer. Please enter yes or no: ";
+			cin >> answer;
+		}
+
+		if (answer == "Yes" || answer == "yes") {
+			cout << "Please Choose the zone you would like to move too from these" << endl;
+			int i = 0;
+			for (Node node : positions) {
+				cout << i << ": " << node.name << endl;
+				i++;
+			}
+
+			int playerChoice;
+			cin >> playerChoice;
+			while (playerChoice < positions.size() || playerChoice > positions.size() || positions[playerChoice].start) {
+				cout << "enter valied region ID, (cannot move into manhattan, since already occupied)" << endl;
+				cin >> playerChoice;
+			}
+			this->region.nbPlayers--;
+			this->region = positions[playerChoice];
+			this->region.nbPlayers++;
+		}
+		
+	}
+}
+
 void Player::chooseMonster(Deck deck) {
 	vector<Monster> monsters = deck.getMonsters();
 
@@ -261,15 +320,15 @@ void Player::chooseMonster(Deck deck) {
 	cout << "You have choosen to play has: " << this->monsterCard.getName() << endl;
 }
 
-void Player::chooseRegion(Map map) {
+void Player::chooseRegion(Map &map) {
 
 	vector<Node> regions = map.graph.getRegions();
 
-	cout << "Choose the id of the Region you would like to start at: " << endl;
+	cout << this->playerName << ": Choose the id of the Region you would like to start at: " << endl;
 
 	int i = 0;
 	for (Node region : regions) {
-		if (region.start != false) {
+		if (region.start != false && map.graph.getNbOfPlayersInZone(region.id) < 2) {
 			cout << region.id << " :" << region.name << endl;
 		}
 		i++;
@@ -287,40 +346,17 @@ void Player::chooseRegion(Map map) {
 		region = map.graph.getNodeFromId(regionChoice);
 	}
 
-	region.nbPlayers++;
-
 	cout << "You have choosen to start: " << region.name << endl;
 
 	this->region = region;
+
+	//add to the player count of the ZONE
+	int currentSize = map.graph.getNbOfPlayersInZone(regionChoice);
+	map.graph.setNbOfPlayersInZone(regionChoice, currentSize++);
 }
 
 void Player::addToken(Token token) {
 	this->tokens.push_back(token);
-}
-
-void Player::move(Map map) {
-	vector<Node> positions = map.graph.availableRegions(this->region.id);
-
-	cout << "Please Choose the zone you would like to move too from these" << endl;
-	int i = 0;
-	for (Node node : positions) {
-		cout << i << ": "<< node.name << endl;
-		i++;
-	}
-
-	if (positions.size() == 1) {
-		cout << "You need to move to Manhattan" << endl;
-		this->region = positions[0];
-	}
-	else {
-		int playerChoice;
-		cin >> playerChoice;
-		while (playerChoice < positions.size() || playerChoice > positions.size()) {
-			cout << "enter valied region ID" << endl;
-			cin >> playerChoice;
-		}
-		this->region = positions[playerChoice];
-	}
 }
 
 void Player::buyCards(Deck &deck)
