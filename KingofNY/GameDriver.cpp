@@ -10,21 +10,22 @@ GameDriver::~GameDriver() {
 }
 
 bool GameDriver::selectMap(string file) {
-	this->map = Map(file);
+	this->gameMap = Map(file);
 
-	if (map.CreateMap()) {
+	if (gameMap.CreateMap()) {
 		cout << "Map has been succesfuly loaded" << endl;
 		return true;
 	}
 	else {
 		cout << "Problem: Map not loaded succesfully" << endl;
+		return false;
 	}
 	return false;
 }
 
 Map GameDriver::getMap()
 {
-	return this->map;
+	return this->gameMap;
 }
 
 bool GameDriver::loadPlayers() {
@@ -46,8 +47,7 @@ bool GameDriver::loadPlayers() {
 		cin >> playerName;
 		Player player = Player(playerName);
 
-		//TODO assign dice rolling facilities, create a deck of cards, and an empty hand of cards
-		this->playerArray[i]  = player;
+		this->playerArray[i] = player;
 	}
 	return true;
 }
@@ -59,9 +59,8 @@ void GameDriver::printPlayers() {
 }
 
 void GameDriver::startup() {
-	for (Player player : playerArray) {
-		player.chooseRegion(this->map);
-		this->map.graph.printGraph();
+	for (Player player : orderedPlayerArray) {
+		player.chooseRegion(this->gameMap);
 	}
 }
 
@@ -101,5 +100,10 @@ void GameDriver::determineOrder() {
 		this->orderedPlayerArray.push_back(player);
     }
     std::cout << std::endl;
+}
+
+vector<Player> GameDriver::getPlayerArray()
+{
+	return orderedPlayerArray;
 }
 

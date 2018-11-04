@@ -17,7 +17,7 @@ public:
 	int nbPlayers;
 	vector<Player> playerArray;
 	vector<Player> orderedPlayerArray;
-	Map map;
+	Map gameMap;
 
 	GameDriver();
 	~GameDriver();
