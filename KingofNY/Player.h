@@ -58,7 +58,7 @@ public:
 	void chooseRegion(Map &map);
 
 	void addToken(Token token);
-	void move(Map map);
+	void move(Map &map);
 	void buyCards(Deck &deck);
 	void buyCard(Deck &deck, Card card, int i);
 	void buyDiscard(Deck &deck);

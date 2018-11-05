@@ -100,8 +100,8 @@ Graph::Graph(int nbNodes) {
 
 	//empty all the zones to start
 	nbPlayersInZones.resize(nbNodes);
-	for (int number : nbPlayersInZones) {
-		number = 0;
+	for (int i = 0; i < nbNodes; i++) {
+		this->nbPlayersInZones[i] = 0;
 	}
 }
 

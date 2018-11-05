@@ -236,32 +236,45 @@ void Player::ResolveDice() {
 	}
 }
 
-void Player::move(Map map) {
+void Player::move(Map &map) {
 
-	this->region;
 	vector<Node> positions = map.graph.availableRegions(this->region.id);
+	int currentSize = 0;
 
 	//if player is in manhattan. (not a starting position)
 	if (!this->region.start) {
 		//if player is upper manhattan, no movement during this turn
 		if (this->region.victoryPoints == 2 || this->region.energyCube == 2) {
-			cout << "You are already at the in upper Manhattan." << endl;
+			cout << "You are already in upper Manhattan." << endl;
 		}
 		else {
 			//moving to next manhattan zone
 			cout << "Moving to " << positions[0].name << endl;
-			this->region.nbPlayers--;
+
+			//removing player from current position
+			int currentSize = map.graph.getNbOfPlayersInZone(this->region.id);
+			map.graph.setNbOfPlayersInZone(this->region.id, --currentSize);
+
 			this->region = positions[0];
-			this->region.nbPlayers++;
+
+			//add to the player count of the ZONE
+			currentSize = map.graph.getNbOfPlayersInZone(this->region.id);
+			map.graph.setNbOfPlayersInZone(this->region.id, ++currentSize);
 		}	
 	}
 	//if there is no one in manhattan, player needs to move into manhattan
 	else if (map.graph.getNbOfPlayersInManhattan() == 0) {
 		cout << endl << "You need to move to Manhattan. New posistion: " << positions[0].name << endl;
-		this->region.nbPlayers--;
+
+		//removing player from current position
+		currentSize = map.graph.getNbOfPlayersInZone(this->region.id);
+		map.graph.setNbOfPlayersInZone(this->region.id, --currentSize);
+
 		this->region = positions[0];
-		this->region.nbPlayers++;
-		map.graph.setNbOfPlayersInManhattan(map.graph.getNbOfPlayersInManhattan() + 1);
+
+		//add to the player count of the ZONE
+		currentSize = map.graph.getNbOfPlayersInZone(this->region.id);
+		map.graph.setNbOfPlayersInZone(this->region.id, ++currentSize);
 	}
 	else {
 		cout << "Would like to move to another borough? (yes or no): " << endl;
@@ -287,9 +300,16 @@ void Player::move(Map map) {
 				cout << "enter valied region ID, (cannot move into manhattan, since already occupied)" << endl;
 				cin >> playerChoice;
 			}
-			this->region.nbPlayers--;
+
+			//removing player from current position
+			int currentSize = map.graph.getNbOfPlayersInZone(this->region.id);
+			map.graph.setNbOfPlayersInZone(this->region.id, --currentSize);
+
 			this->region = positions[playerChoice];
-			this->region.nbPlayers++;
+			
+			//add to the player count of the ZONE
+			currentSize = map.graph.getNbOfPlayersInZone(this->region.id);
+			map.graph.setNbOfPlayersInZone(this->region.id, ++currentSize);
 		}
 		
 	}
@@ -340,7 +360,7 @@ void Player::chooseRegion(Map &map) {
 
 	Node region = map.graph.getNodeFromId(regionChoice);
 
-	while (region.start == false) {
+	while (region.start == false || map.graph.getNbOfPlayersInZone(region.id) >= 2) {
 		cout << "Please choose valid region Id from the list: " << endl;
 		cin >> regionChoice;
 		region = map.graph.getNodeFromId(regionChoice);
@@ -352,7 +372,7 @@ void Player::chooseRegion(Map &map) {
 
 	//add to the player count of the ZONE
 	int currentSize = map.graph.getNbOfPlayersInZone(regionChoice);
-	map.graph.setNbOfPlayersInZone(regionChoice, currentSize++);
+	map.graph.setNbOfPlayersInZone(regionChoice, ++currentSize);
 }
 
 void Player::addToken(Token token) {

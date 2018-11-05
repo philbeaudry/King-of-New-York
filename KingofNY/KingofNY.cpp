@@ -40,6 +40,7 @@ int main() {
 
 	//Demo part 3 -- main game loop
 	cout << endl << "Part 3 Demo: main loop" << endl;
+	Map map = gameDriver.getMap();
 	bool activeGame = true;
 	while (activeGame) {
 		//for each player
@@ -52,7 +53,7 @@ int main() {
 			player.ResolveDice();
 
 			//3 move
-			player.move(gameDriver.getMap());
+			player.move(map);
 
 			//4 buy card (optional)
 			player.buyCards(deck);

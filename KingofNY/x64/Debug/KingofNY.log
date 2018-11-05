@@ -1,2 +1,3 @@
-﻿  Player.cpp
+﻿  KingofNY.cpp
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\kingofny.cpp(15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   KingofNY.vcxproj -> C:\Users\philb\Documents\School\COMP 345 - C++\Assignment\King-of-New-York\x64\Debug\KingofNY.exe
