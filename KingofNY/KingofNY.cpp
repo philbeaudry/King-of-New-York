@@ -44,7 +44,7 @@ int main() {
 	bool activeGame = true;
 	while (activeGame) {
 		//for each player
-		for (Player player: gameDriver.getPlayerArray()) {
+		for (Player &player: gameDriver.getPlayerArray()) {
 			cout << endl << "-------" << endl << "Now its " << player.getName() << " turn!" << endl << "-------" << endl;
 			//1 roll the dice
 			player.RollDice();
@@ -77,7 +77,7 @@ int main() {
 			cout << "Invalid answer. Please enter yes or no: ";
 			cin >> answer;
 		}
-		if (answer == "yes" || answer == "Yes") {
+		if (answer == "no" || answer == "No") {
 			activeGame = false;
 		}
 	}

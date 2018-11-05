@@ -135,12 +135,12 @@ void Player::solveHeal(int count)
 {
 	int HP = this->getMonster().getlifePoints();
 	if (HP >= 10) {
-		cout << "Your monster has already the maximum amount of health points!";
+		cout << "Your monster has already the maximum amount of health points!" << endl;
 	}
 	else {
 		this->monsterCard.modifyLifePoints("increase",count);
 		int HP2 = this->getMonster().getlifePoints();
-		cout << "Your monster now has " << HP2 << " health points!";
+		cout << "Your monster now has " << HP2 << " health points!" << endl;
 	}
 }
 
@@ -271,10 +271,7 @@ void Player::move(Map &map) {
 		map.graph.setNbOfPlayersInZone(this->region.id, --currentSize);
 
 		this->region = positions[0];
-
-		//add to the player count of the ZONE
-		currentSize = map.graph.getNbOfPlayersInZone(this->region.id);
-		map.graph.setNbOfPlayersInZone(this->region.id, ++currentSize);
+		map.graph.setNbOfPlayersInManhattan(1);
 	}
 	else {
 		cout << "Would like to move to another borough? (yes or no): " << endl;
@@ -288,16 +285,22 @@ void Player::move(Map &map) {
 
 		if (answer == "Yes" || answer == "yes") {
 			cout << "Please Choose the zone you would like to move too from these" << endl;
-			int i = 0;
-			for (Node node : positions) {
-				cout << i << ": " << node.name << endl;
-				i++;
+
+			for (int i = 0; i < positions.size(); i++) {
+				if (positions[i].start) {
+					cout << i << ": " << positions[i].name << endl;
+				}
 			}
 
 			int playerChoice;
 			cin >> playerChoice;
-			while (playerChoice < positions.size() || playerChoice > positions.size() || positions[playerChoice].start) {
-				cout << "enter valied region ID, (cannot move into manhattan, since already occupied)" << endl;
+			while (playerChoice < 0 || playerChoice >= positions.size() || !positions[playerChoice].start || map.graph.getNbOfPlayersInZone(positions[playerChoice].id) >= 2) {
+				if (playerChoice < 0 || playerChoice >= positions.size()) {
+					cout << "enter valied region ID: " << endl;
+				}
+				else {
+					cout << "Choose from the given IDs: " << endl;
+				}
 				cin >> playerChoice;
 			}
 

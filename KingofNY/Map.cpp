@@ -136,26 +136,15 @@ void Graph::printGraph() {
 	}
 }
 
-//This returns a vector of all the available Regions reachable from the current player's posstion
+//This returns a vector of all the available Regions reachable from the current player's possition
 vector<Node> Graph::availableRegions(int id) {
 
 	vector<Node> availableRegions;
 
-	if (getNodeFromId(id).start == false) {
-
-	}
 	for (Node currentNode : adjacency[id]) {
-		if (currentNode.start == false) {
-			if (currentNode.nbPlayers == 0) {
-				availableRegions.clear();
-				availableRegions.push_back(currentNode);
-				return availableRegions;
-			}
-		}
-		else if (currentNode.nbPlayers < 2) {
-			availableRegions.push_back(currentNode);
-		}
+		availableRegions.push_back(currentNode);
 	}
+	
 	return availableRegions;
 }
 

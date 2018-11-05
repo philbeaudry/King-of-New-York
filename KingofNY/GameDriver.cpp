@@ -59,7 +59,7 @@ void GameDriver::printPlayers() {
 }
 
 void GameDriver::startup() {
-	for (Player player : orderedPlayerArray) {
+	for (Player &player : orderedPlayerArray) {
 		player.chooseRegion(this->gameMap);
 	}
 }
