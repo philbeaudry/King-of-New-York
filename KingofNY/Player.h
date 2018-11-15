@@ -14,10 +14,14 @@
 #include "Deck.h"
 #include"Card.h"
 #include "Map.h"
+#include "Strategy.h"
 
 class Player
 {
 private:
+
+	Strategy *strategy;
+
 	string playerName;
 	int energyCount;
 	bool superstar;
@@ -27,17 +31,25 @@ private:
 	Dice dice;
 
 public:
-	Monster monsterCard;
-	Dice getDice();
 	Player();
+	Player(Strategy *initStrategy);
+	void setStrategy(Strategy *newStrategy);
+
+	int executeStrategy();
+	//Strategy specific
+	void RollDice();
+	void ResolveDice();
+	void move(Map &map);
+	void buyCards(Deck &deck);
+
 	Player(string);
 	~Player();
+	Monster monsterCard;
+	Dice getDice();
 	string getName();
 	int getEnergy();
 	bool hasSuperstar();
 	void setSuperStar(string change);
-	void RollDice();
-	void ResolveDice();
 	vector <string> getDiceValues();
 	vector <string> getValues();
 	void startRoll();
@@ -58,8 +70,6 @@ public:
 	void chooseRegion(Map &map);
 
 	void addToken(Token token);
-	void move(Map &map);
-	void buyCards(Deck &deck);
 	void buyCard(Deck &deck, Card card, int i);
 	void buyDiscard(Deck &deck);
 	void discardCards(Deck &deck);

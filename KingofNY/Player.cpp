@@ -2,13 +2,12 @@
 #include "Player.h"
 
 
-Dice Player::getDice()
-{
+Dice Player::getDice() {
 	return this->dice;
 }
 
 //default constructor
-Player::Player(){
+Player::Player() {
 	playerName = "";
 	energyCount = 50;
 }
