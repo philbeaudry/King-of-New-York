@@ -159,6 +159,8 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Observer.h" />
+    <ClInclude Include="phaseObserver.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Token.h" />
@@ -177,6 +179,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Observer.cpp" />
+    <ClCompile Include="phaseObserver.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />

@@ -24,6 +24,7 @@ class Deck
 		void addCard(Card);
 		void removeCard(int);
 		void removeTop();
+		void removeMonster(int);
 		int getSize();
 		Card getCard(int);
 		void drawCard();

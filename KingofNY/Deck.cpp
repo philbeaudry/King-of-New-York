@@ -72,6 +72,11 @@ void Deck::generateDeck() {
 		availCards.pop_back();
 	}
 
+	void Deck::removeMonster(int j)
+	{
+		monsters.erase(monsters.begin() + j);
+	}
+
 	void Deck::removeCard(int j)
 	{
 		availCards.erase(availCards.begin() + j);
