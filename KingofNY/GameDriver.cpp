@@ -41,11 +41,16 @@ bool GameDriver::loadPlayers() {
 	this->nbPlayers = nbPlayers;
 	this->playerArray.resize(nbPlayers);
 
+	Deck deck;
+	deck.generateDeck();
+	deck.generateMonsters();
 	for (int i = 0; i < nbPlayers; i++) {
 		cout << "Player " << i << ", what NAME would you like to use?" << endl;
 		string playerName = string();
 		cin >> playerName;
 		Player player = Player(playerName);
+		
+		player.chooseMonster(deck);
 
 		this->playerArray[i] = player;
 	}
