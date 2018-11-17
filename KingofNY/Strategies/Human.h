@@ -5,10 +5,10 @@
 #include "../Dice.h"
 
 class Human : public Strategy {
-private:
-	Dice dice;
-	int energyCount;
+
 public:
+	Human();
+	~Human();
 	//from strategy
 	void RollDice();
 	void ResolveDice();

@@ -6,21 +6,33 @@
 
 class Strategy {
 
-private:
-	string playerName;
+protected:
 	int energyCount;
 	bool superstar;
 	vector <Card> cards;
 	vector <Token> tokens;
 	Node region;
 	Dice dice;
+	Monster monsterCard;
 public:
+	//Strategy will change with the types of players
 	virtual void RollDice();
 	virtual void ResolveDice();
 	virtual void move(Map &map);
 	virtual void buyCards(Deck &deck);
 
-	//for code behevior
+	//These are used with all the strategies
+	Dice getDice();
+	int getEnergy();
+	bool hasSuperstar();
+	void setSuperStar(string change);
+	vector <string> getDiceValues();
+	vector <string> getValues();
+	void startRoll();
+	vector <Card> getCards();
+	Node getRegion();
+	Monster getMonster();
+
 	void resolveValue(string, int);
 	void solveEnergy(int);
 	void solveAttack(int);
@@ -29,7 +41,14 @@ public:
 	void solveCelebrity(int);
 	void solveOuch(int);
 
-	Monster getMonster();
+	//for demo purposes
+	vector<Token> getTokens();
+	void chooseMonster(Deck deck);
+	void chooseRegion(Map &map);
+	void addToken(Token token);
+	void buyCard(Deck &deck, Card card, int i);
+	void buyDiscard(Deck &deck);
+	void discardCards(Deck &deck);
 };
 
 

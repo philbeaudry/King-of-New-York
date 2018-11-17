@@ -8,6 +8,7 @@
 #include <map>
 #include <set>
 #include <utility>
+#include "Strategies/Human.h"
 
 using namespace std;
 

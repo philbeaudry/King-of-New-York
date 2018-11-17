@@ -1,6 +1,10 @@
 #include "../pch.h"
 #include "Human.h"
 
+Human::Human(){}
+
+Human::~Human(){}
+
 //method called by player object to commence dice roll sequence
 void Human::RollDice() {
 	return dice.diceDriver();

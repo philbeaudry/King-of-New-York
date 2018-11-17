@@ -49,8 +49,11 @@ bool GameDriver::loadPlayers() {
 		string playerName = string();
 		cin >> playerName;
 		Player player = Player(playerName);
+
+		Strategy *newStrategy = new Strategy();
+		player.setStrategy(newStrategy);
 		
-		player.chooseMonster(deck);
+		//player.chooseMonster(deck);
 
 		this->playerArray[i] = player;
 	}
