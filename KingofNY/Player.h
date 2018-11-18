@@ -14,19 +14,17 @@
 #include "Deck.h"
 #include"Card.h"
 #include "Map.h"
-#include "Strategies/Strategy.h"
+#include "Strategy.h"
 
 class Player
 {
 private:
 	Strategy *strategy;
-	string playerName;
 
 public:
 	Player();
 	~Player();
-	Player(string);
-	Player(Strategy *initStrategy);
+	Player(Strategy *initStrategy, string name);
 	void setStrategy(Strategy *newStrategy);
 
 	//Strategy specific
@@ -35,6 +33,11 @@ public:
 	void executeMove(Map &map);
 	void executeBuyCards(Deck &deck);
 
+	//calls the strategy class, but are defined in the stragegy since they are the same no matter the type
 	string getName();
+	void startRoll();
+	void chooseRegion(Map &map);
+	vector<string> getValues();
+	void chooseMonster(Deck deck);
 };
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "Strategy.h"
-#include "../Map.h"
-#include "../Deck.h"
+#include "Map.h"
+#include "Deck.h"
 
 class Moderate : public Strategy {
 public:

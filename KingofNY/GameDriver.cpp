@@ -5,7 +5,6 @@
 GameDriver::GameDriver(){
 }
 
-
 GameDriver::~GameDriver() {
 }
 
@@ -48,13 +47,9 @@ bool GameDriver::loadPlayers() {
 		cout << "Player " << i << ", what NAME would you like to use?" << endl;
 		string playerName = string();
 		cin >> playerName;
-		Player player = Player(playerName);
-
-		Strategy *newStrategy = new Strategy();
-		player.setStrategy(newStrategy);
+		Player player = Player(new Human(), playerName);
 		
-		//player.chooseMonster(deck);
-
+		player.chooseMonster(deck);
 		this->playerArray[i] = player;
 	}
 	return true;
@@ -104,7 +99,7 @@ void GameDriver::determineOrder() {
     for (const auto &p : s)
     {
         std::cout << p.first << " ";
-		Player player = Player(p.first);
+		Player player = Player(new Human(), p.first);
 		this->orderedPlayerArray.push_back(player);
     }
     std::cout << std::endl;

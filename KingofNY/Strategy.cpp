@@ -1,4 +1,4 @@
-#include "../pch.h"
+#include "pch.h"
 #include "Strategy.h"
 
 void Strategy::RollDice() {};
@@ -55,6 +55,14 @@ vector<Card> Strategy::getCards() {
 //returns player Monster
 Monster Strategy::getMonster() {
 	return monsterCard;
+}
+
+string Strategy::getName(){
+	return this->playerName;
+}
+
+void Strategy::setName(string name) {
+	this->playerName = name;
 }
 
 //returns player tokens
@@ -165,76 +173,7 @@ void Strategy::solveCelebrity(int count)
 }
 
 //resolves ouch effect
-void Strategy::solveOuch(int count)
-{
-}
-
-//method that prompts the player for order of dice to be resolved
-void Strategy::ResolveDice() {
-	int resolveChoice;
-	vector <int> resolveOrder;
-	vector<string> values = dice.getDiceValues();
-	map<string, int> valueCount;
-	map<int, string> options;
-	int enCount = 0;
-	int atCount = 0;
-	int deCount = 0;
-	int heCount = 0;
-	int ceCount = 0;
-	int ouCount = 0;
-
-	for (int i = 0; i < values.size(); i++) {
-		if (values[i] == "Energy") {
-			enCount++;
-		}
-		else if (values[i] == "Attack") {
-			atCount++;
-		}
-		else if (values[i] == "Destruction") {
-			deCount++;
-		}
-		else if (values[i] == "Heal") {
-			heCount++;
-		}
-		else if (values[i] == "Celebrity") {
-			ceCount++;
-		}
-		else if (values[i] == "Ouch!") {
-			ouCount++;
-		}
-	}
-	valueCount["Energy"] = enCount;
-	valueCount["Attack"] = atCount;
-	valueCount["Destruction"] = deCount;
-	valueCount["Heal"] = heCount;
-	valueCount["Celebrity"] = ceCount;
-	valueCount["Ouch!"] = ouCount;
-
-
-	sort(values.begin(), values.end());
-
-	auto iter = unique(values.begin(), values.end());
-	values.erase(iter, values.end());
-
-	cout << "Select the order in which you would like to resolve your die.";
-	for (int i = 0; i < values.size(); i++) {
-		options[i + 1] = values[i];
-		cout << endl;
-		cout << "Option #" << i + 1 << ": " << values[i] << endl;
-	}
-	for (int i = 1; i <= values.size(); i++) {
-		cout << "Enter dice option number:";
-		cin >> resolveChoice;
-		while (resolveChoice > options.size() || resolveChoice < 0)
-		{
-			cout << "Invalid Input, must in option list, please try again." << endl;
-			cin >> resolveChoice;
-		}
-		resolveOrder.push_back(resolveChoice);
-	}
-	for (int i = 0; i < resolveOrder.size(); i++) {
-		resolveValue(options[resolveOrder[i]], valueCount[options[resolveOrder[i]]]);
-	}
+void Strategy::solveOuch(int count) {
 }
 
 void Strategy::chooseRegion(Map &map) {

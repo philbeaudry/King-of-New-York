@@ -1,14 +1,15 @@
 #pragma once
 #include <vector>
-#include "../Map.h"
-#include "../Deck.h"
-#include "../Dice.h"
+#include "Map.h"
+#include "Deck.h"
+#include "Dice.h"
 
 class Strategy {
 
 protected:
 	int energyCount;
 	bool superstar;
+	string playerName;
 	vector <Card> cards;
 	vector <Token> tokens;
 	Node region;
@@ -32,6 +33,8 @@ public:
 	vector <Card> getCards();
 	Node getRegion();
 	Monster getMonster();
+	string getName();
+	void setName(string name);
 
 	void resolveValue(string, int);
 	void solveEnergy(int);

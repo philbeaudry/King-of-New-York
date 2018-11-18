@@ -1,22 +1,16 @@
 #include "pch.h"
 #include "Player.h"
 
-//default constructor
-Player::Player() {
-	playerName = "";
-}
-
-Player::Player(Strategy * initStrategy) {
+Player::Player(Strategy * initStrategy, string name) {
 	this->strategy = initStrategy;
+	this->strategy->setName(name);
 }
 
 void Player::setStrategy(Strategy * newStrategy) {
 	this->strategy = newStrategy;
 }
 
-//constructor
-Player::Player(string name) {
-	playerName = name;
+Player::Player(){
 }
 
 //destructor
@@ -40,5 +34,21 @@ void Player::executeBuyCards(Deck & deck) {
 
 //returns player name
 string Player::getName() {
-	return playerName;
+	return this->strategy->getName();
+}
+
+void Player::startRoll() {
+	this->strategy->startRoll();
+}
+
+void Player::chooseRegion(Map &map) {
+	this->strategy->chooseRegion(map);
+}
+
+vector<string> Player::getValues(){
+	return this->strategy->getValues();;
+}
+
+void Player::chooseMonster(Deck deck) {
+	this->strategy->chooseMonster(deck);
 }
