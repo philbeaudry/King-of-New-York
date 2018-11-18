@@ -9,6 +9,7 @@
 #include <map>
 #include <set>
 #include <utility>
+#include "Human.h"
 
 using namespace std;
 

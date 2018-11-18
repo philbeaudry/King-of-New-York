@@ -151,10 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Moderate.h" />
+    <ClInclude Include="Agressive.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Dice.h" />
     <ClInclude Include="GameDriver.h" />
+    <ClInclude Include="Human.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Monster.h" />
@@ -162,14 +165,18 @@
     <ClInclude Include="Observer.h" />
     <ClInclude Include="phaseObserver.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Strategy.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Token.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Moderate.cpp" />
+    <ClCompile Include="Agressive.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="GameDriver.cpp" />
+    <ClCompile Include="Human.cpp" />
     <ClCompile Include="KingofNY.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Monster.cpp" />
@@ -182,6 +189,7 @@
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="phaseObserver.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Strategy.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
