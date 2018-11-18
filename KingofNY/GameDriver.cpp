@@ -1,11 +1,25 @@
 #include "pch.h"
 #include "GameDriver.h"
+#include <vector>
 
+using namespace std;
 
 GameDriver::GameDriver(){
 }
 
 GameDriver::~GameDriver() {
+}
+
+
+void GameDriver::attach(Observer *obs)
+{
+	observerList.push_back(obs);
+}
+
+void GameDriver::notify() {
+
+	for (int i = 0; i < observerList.size(); i++)
+		observerList[i]->update();	
 }
 
 bool GameDriver::selectMap(string file) {
@@ -95,14 +109,14 @@ void GameDriver::determineOrder() {
 
 	cout << endl;
 	cout << "Game will proceed in the following order of turns:" << endl;
-
+	
     for (const auto &p : s)
     {
         std::cout << p.first << " ";
 		Player player = Player(new Human(), p.first);
 		this->orderedPlayerArray.push_back(player);
     }
-    std::cout << std::endl;
+	cout << endl << endl;
 }
 
 vector<Player> GameDriver::getPlayerArray()
@@ -110,3 +124,42 @@ vector<Player> GameDriver::getPlayerArray()
 	return orderedPlayerArray;
 }
 
+void GameDriver::play(Deck deck, Map map) {
+
+	bool activeGame = true;
+	while (activeGame) {
+		//for each player
+		for (Player &player : this->getPlayerArray()) {
+			this->currentPlayer = player;
+			//1 roll the dice
+			this->currentPhase = "Roll the dice step";
+			notify();
+			player.RollDice();
+
+			//2 resolve the dice (mandatory)
+			this->currentPhase = "Resolve the dice step";
+			notify();
+			player.ResolveDice();
+			//3 move
+			this->currentPhase = "Move step";
+			notify();
+			player.move(map);
+			//4 buy card (optional)
+			this->currentPhase = "Buy cards step";
+			notify();
+			player.buyCards(deck);
+			
+			//5 turn
+			if (player.getMonster().getVictoryPoints() == 20) {
+				//if 20 vicotry points
+				this->currentPhase = "The game has ended!";
+				notify();
+				activeGame = false;
+			}
+		}
+		//if only one player left at the end
+		if (this->getPlayerArray().size() <= 1) {
+			activeGame = false;
+		}
+	}
+}
