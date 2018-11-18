@@ -134,20 +134,20 @@ void GameDriver::play(Deck deck, Map map) {
 			//1 roll the dice
 			this->currentPhase = "Roll the dice step";
 			notify();
-			player.RollDice();
+			player.executeRollDice();
 
 			//2 resolve the dice (mandatory)
 			this->currentPhase = "Resolve the dice step";
 			notify();
-			player.ResolveDice();
+			player.executeResolveDice();
 			//3 move
 			this->currentPhase = "Move step";
 			notify();
-			player.move(map);
+			player.executeMove(map);
 			//4 buy card (optional)
 			this->currentPhase = "Buy cards step";
 			notify();
-			player.buyCards(deck);
+			player.executeBuyCards(deck);
 			
 			//5 turn
 			if (player.getMonster().getVictoryPoints() == 20) {

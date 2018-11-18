@@ -75,7 +75,7 @@ Node Strategy::getRegion() {
 	return region;
 }
 
-void Strategy::chooseMonster(Deck deck) {
+void Strategy::chooseMonster(Deck &deck) {
 	vector<Monster> monsters = deck.getMonsters();
 
 	cout << "Choose one of the Monsters from the following options: " << endl;

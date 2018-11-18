@@ -52,3 +52,7 @@ vector<string> Player::getValues(){
 void Player::chooseMonster(Deck &deck) {
 	this->strategy->chooseMonster(deck);
 }
+
+Monster Player::getMonster() {
+	return this->strategy->getMonster();
+}

@@ -46,7 +46,7 @@ public:
 
 	//for demo purposes
 	vector<Token> getTokens();
-	void chooseMonster(Deck deck);
+	void chooseMonster(Deck &deck);
 	void chooseRegion(Map &map);
 	void addToken(Token token);
 	void buyCard(Deck &deck, Card card, int i);
