@@ -39,6 +39,6 @@ public:
 	void startRoll();
 	void chooseRegion(Map &map);
 	vector<string> getValues();
-	void chooseMonster(Deck deck);
+	void chooseMonster(Deck &deck);
 };
 
