@@ -318,7 +318,7 @@ void Player::move(Map &map) {
 	}
 }
 
-void Player::chooseMonster(Deck deck) {
+void Player::chooseMonster(Deck &deck) {
 	vector<Monster> monsters = deck.getMonsters();
 
 	cout << "Choose one of the Monsters from the following options: " << endl;
@@ -339,8 +339,8 @@ void Player::chooseMonster(Deck deck) {
 	}
 
 	this->monsterCard = monsters[monsterChoice - 1];
-
-	cout << "You have choosen to play has: " << this->monsterCard.getName() << endl;
+	deck.removeMonster(monsterChoice - 1);
+	cout << "You have choosen to play as: " << this->monsterCard.getName() << endl;
 }
 
 void Player::chooseRegion(Map &map) {
@@ -433,7 +433,7 @@ void Player::buyDiscard(Deck &deck)
 {
 	int buyDisc;
 	int cardSelect;
-	
+	cout << "You have " << this->getEnergy() << " energy to work with." << endl;
 	for (int i = 0; i < deck.availCards.size(); i++) {
 		cout << "Card " << i + 1 << ":" << deck.availCards[i].getName() << endl;
 	}

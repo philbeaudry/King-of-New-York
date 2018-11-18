@@ -15,6 +15,7 @@
 #include"Card.h"
 #include "Map.h"
 
+
 class Player
 {
 private:
@@ -27,6 +28,7 @@ private:
 	Dice dice;
 
 public:
+
 	Monster monsterCard;
 	Dice getDice();
 	Player();
@@ -54,7 +56,7 @@ public:
 	void solveCelebrity(int);
 	void solveOuch(int);
 
-	void chooseMonster(Deck deck);
+	void chooseMonster(Deck &deck);
 	void chooseRegion(Map &map);
 
 	void addToken(Token token);
