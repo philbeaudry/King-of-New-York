@@ -3,17 +3,11 @@
 #include "GameDriver.h"
 #include "Player.h"
 
-
-
-statsObserver::statsObserver(GameDriver *gd) : Observer(gd)
-{
+statsObserver::statsObserver(GameDriver *gd) : Observer(gd){
 }
 
-
-statsObserver::~statsObserver()
-{
+statsObserver::~statsObserver(){
 }
-
 
 void statsObserver::update() {
 	cout << endl << "===================================" << endl;
@@ -23,8 +17,7 @@ void statsObserver::update() {
 	cout << endl << "===================================" << endl;
 }
 
-string statsObserver::buildBuilding()
-{
+string statsObserver::buildBuilding(){
 	string building = "";
 	for (int y = 1; y <= 3; y++) {
 		for (int x = 1; x <= 10; x++) {
@@ -35,15 +28,14 @@ string statsObserver::buildBuilding()
 	return building;
 }
 
-void statsObserver::printInfo(string cityName)
-{
+void statsObserver::printInfo(string cityName){
 	for (int i = 0; i < this->city[cityName].size(); i++) {
 		cout << "Monster Name: " << this->city[cityName][i].getMonster().getName();
-		cout << " Victory Points: " << this->city[cityName][i].getMonster().getVictoryPoints();
+		cout << " Victory Points: " << this->city[cityName][i].getMonster().getVictoryPoints() << endl;
 	}
 }
-void statsObserver::printCity()
-{
+
+void statsObserver::printCity(){
 	vector<string> cities;
 	cities.push_back("StatenIsland");
 	cities.push_back("Brooklyn");
@@ -60,8 +52,7 @@ void statsObserver::printCity()
 		cout << endl;
 	}
 }
-void statsObserver::buildNY()
-{
+void statsObserver::buildNY(){
 	
 	vector<Player> players = driver->getPlayerArray();
 
