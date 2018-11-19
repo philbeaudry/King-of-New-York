@@ -45,6 +45,10 @@ void Player::chooseRegion(Map &map) {
 	this->strategy->chooseRegion(map);
 }
 
+Node Player::getRegion(){
+	return this->strategy->getRegion();
+}
+
 vector<string> Player::getValues(){
 	return this->strategy->getValues();;
 }

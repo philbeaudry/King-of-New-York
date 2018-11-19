@@ -38,6 +38,7 @@ public:
 	string getName();
 	void startRoll();
 	void chooseRegion(Map &map);
+	Node getRegion();
 	vector<string> getValues();
 	void chooseMonster(Deck &deck);
 	Monster getMonster();

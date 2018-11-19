@@ -165,6 +165,7 @@
     <ClInclude Include="Observer.h" />
     <ClInclude Include="phaseObserver.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="statsObserver.h" />
     <ClInclude Include="Strategy.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Token.h" />
@@ -189,6 +190,7 @@
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="phaseObserver.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="statsObserver.cpp" />
     <ClCompile Include="Strategy.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />
