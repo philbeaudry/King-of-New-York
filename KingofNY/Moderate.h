@@ -5,6 +5,9 @@
 
 class Moderate : public Strategy {
 public:
+	Moderate();
+	~Moderate();
+
 	void RollDice();
 	void ResolveDice();
 	void move(Map &map);

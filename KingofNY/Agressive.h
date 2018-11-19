@@ -5,6 +5,8 @@
 
 class Agressive : public Strategy {
 public:
+	Agressive();
+	~Agressive();
 	void RollDice();
 	void ResolveDice();
 	void move(Map &map);

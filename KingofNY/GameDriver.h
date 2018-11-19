@@ -10,6 +10,8 @@
 #include <set>
 #include <utility>
 #include "Human.h"
+#include "Agressive.h"
+#include "Moderate.h"
 
 using namespace std;
 
