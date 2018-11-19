@@ -61,8 +61,26 @@ bool GameDriver::loadPlayers() {
 		cout << "Player " << i << ", what NAME would you like to use?" << endl;
 		string playerName = string();
 		cin >> playerName;
+    
+    cout << p.first << ", is what type of player?(human, agressive or moderate)" << endl;
 
-		Player player = Player(new Human(), playerName);
+		string playerType;
+		cin >> playerType;
+		while (playerType != "human" && playerType != "agressive" && playerType != "moderate") {
+			cout << p.first << ", choose one of the following type (human, agressive or moderate)" << endl;
+			cin >> playerType;
+		}
+
+		Player player;
+		if (playerType == "human") {
+			player = Player(new Human(), p.first);
+		}
+		else if (playerType == "agressive") {
+			player = Player(new Agressive(), p.first);
+		}
+		else if (playerType == "moderate") {
+			player = Player(new Moderate(), p.first);
+		}
 	
 		player.chooseMonster(deck);
 		this->playerArray[i] = player;
@@ -83,7 +101,6 @@ void GameDriver::startup() {
 }
 
 void GameDriver::determineOrder() {
-	this->playerArray;
 	map<string, int> order;
 	//6 black dice and the 2 green dice	
 	int nbAttack = 0;
@@ -111,31 +128,13 @@ void GameDriver::determineOrder() {
 	cout << endl;
 	cout << "Game will proceed in the following order of turns:" << endl;
 	
-	int i = 1;
-    for (const auto &p : s) {
-        cout << p.first << " is #" << i << endl;
-		i++;
-		cout << p.first << ", is what type of player?(human, agressive or moderate)" << endl;
-
-		string playerType;
-		cin >> playerType;
-		while (playerType != "human" && playerType != "agressive" && playerType != "moderate") {
-			cout << p.first << ", choose one of the following type (human, agressive or moderate)" << endl;
-			cin >> playerType;
-		}
-
-		Player player;
-		if (playerType == "human") {
-			player = Player(new Human(), p.first);
-		}
-		else if (playerType == "agressive") {
-			player = Player(new Agressive(), p.first);
-		}
-		else if (playerType == "moderate") {
-			player = Player(new Moderate(), p.first);
-		}
-
-		this->orderedPlayerArray.push_back(player);
+    for (const auto &p : s)
+    {
+        std::cout << p.first << " ";
+		for (int i = 0; i < this->playerArray.size(); i++) {
+			if (p.first == this->playerArray[i].getName()) {
+				this->orderedPlayerArray.push_back(playerArray[i]);
+			}
     }
 	cout << endl << endl;
 }
