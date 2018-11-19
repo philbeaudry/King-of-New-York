@@ -27,7 +27,6 @@ int main() {
 
 	srand(time(NULL));
 
-
 	GameDriver gameDriver;
 	statsObserver statobs(&gameDriver);
 	phaseObserver phaseObs(&gameDriver);
@@ -52,9 +51,7 @@ int main() {
 
 	gameDriver.play(deck,gameMap);
 
-
 	return 0;
-	
 }
 	
 

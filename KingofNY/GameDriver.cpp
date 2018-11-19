@@ -11,13 +11,11 @@ GameDriver::~GameDriver() {
 }
 
 
-void GameDriver::attach(Observer *obs)
-{
+void GameDriver::attach(Observer *obs) {
 	observerList.push_back(obs);
 }
 
 void GameDriver::notify() {
-
 	for (int i = 0; i < observerList.size(); i++)
 		observerList[i]->update();	
 }
@@ -36,8 +34,7 @@ bool GameDriver::selectMap(string file) {
 	return false;
 }
 
-Map GameDriver::getMap()
-{
+Map GameDriver::getMap() {
 	return this->gameMap;
 }
 
@@ -62,24 +59,24 @@ bool GameDriver::loadPlayers() {
 		string playerName = string();
 		cin >> playerName;
     
-    cout << p.first << ", is what type of player?(human, agressive or moderate)" << endl;
+		cout << playerName << ", is what type of player?(human, agressive or moderate)" << endl;
 
 		string playerType;
 		cin >> playerType;
 		while (playerType != "human" && playerType != "agressive" && playerType != "moderate") {
-			cout << p.first << ", choose one of the following type (human, agressive or moderate)" << endl;
+			cout << playerName << ", choose one of the following type (human, agressive or moderate)" << endl;
 			cin >> playerType;
 		}
 
 		Player player;
 		if (playerType == "human") {
-			player = Player(new Human(), p.first);
+			player = Player(new Human(), playerName);
 		}
 		else if (playerType == "agressive") {
-			player = Player(new Agressive(), p.first);
+			player = Player(new Agressive(), playerName);
 		}
 		else if (playerType == "moderate") {
-			player = Player(new Moderate(), p.first);
+			player = Player(new Moderate(), playerName);
 		}
 	
 		player.chooseMonster(deck);
@@ -135,12 +132,12 @@ void GameDriver::determineOrder() {
 			if (p.first == this->playerArray[i].getName()) {
 				this->orderedPlayerArray.push_back(playerArray[i]);
 			}
+		}
     }
 	cout << endl << endl;
 }
 
-vector<Player> GameDriver::getPlayerArray()
-{
+vector<Player> GameDriver::getPlayerArray() {
 	return orderedPlayerArray;
 }
 
