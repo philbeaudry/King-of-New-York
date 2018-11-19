@@ -1,2 +1,38 @@
-﻿  Player.cpp
-  KingofNY.vcxproj -> C:\Users\ishma\source\repos\King-of-New-York\x64\Debug\KingofNY.exe
+﻿  pch.cpp
+  Moderate.cpp
+  Agressive.cpp
+  Card.cpp
+  Deck.cpp
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\deck.cpp(92): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\deck.cpp(180): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Dice.cpp
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\dice.cpp(152): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\dice.cpp(183): warning C4101: 'diceSelection': unreferenced local variable
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\dice.cpp(180): warning C4101: 'numOfDices': unreferenced local variable
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\dice.cpp(184): warning C4101: 'rerollArray': unreferenced local variable
+  GameDriver.cpp
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\gamedriver.cpp(137): error C2039: 'RollDice': is not a member of 'Player'
+  c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\player.h(20): note: see declaration of 'Player'
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\gamedriver.cpp(142): error C2039: 'ResolveDice': is not a member of 'Player'
+  c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\player.h(20): note: see declaration of 'Player'
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\gamedriver.cpp(146): error C2039: 'move': is not a member of 'Player'
+  c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\player.h(20): note: see declaration of 'Player'
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\gamedriver.cpp(150): error C2039: 'buyCards': is not a member of 'Player'
+  c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\player.h(20): note: see declaration of 'Player'
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\gamedriver.cpp(153): error C2039: 'getMonster': is not a member of 'Player'
+  c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\player.h(20): note: see declaration of 'Player'
+  Human.cpp
+  KingofNY.cpp
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\kingofny.cpp(16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Map.cpp
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\map.cpp(29): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\map.cpp(47): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\philb\documents\school\comp 345 - c++\assignment\king-of-new-york\kingofny\map.cpp(60): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Monster.cpp
+  Observer.cpp
+  phaseObserver.cpp
+  Player.cpp
+  Strategy.cpp
+  Tile.cpp
+  Token.cpp
+  Generating Code...

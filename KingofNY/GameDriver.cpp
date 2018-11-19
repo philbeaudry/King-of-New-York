@@ -7,7 +7,6 @@ using namespace std;
 GameDriver::GameDriver(){
 }
 
-
 GameDriver::~GameDriver() {
 }
 
@@ -62,10 +61,9 @@ bool GameDriver::loadPlayers() {
 		cout << "Player " << i << ", what NAME would you like to use?" << endl;
 		string playerName = string();
 		cin >> playerName;
-		Player player = Player(playerName);
+		Player player = Player(new Human(), playerName);
 		
 		player.chooseMonster(deck);
-
 		this->playerArray[i] = player;
 	}
 	return true;
@@ -118,7 +116,6 @@ void GameDriver::determineOrder() {
 			if (p.first == this->playerArray[i].getName()) {
 				this->orderedPlayerArray.push_back(playerArray[i]);
 			}
-		}
     }
 	cout << endl << endl;
 }
@@ -138,20 +135,20 @@ void GameDriver::play(Deck deck, Map map) {
 			//1 roll the dice
 			this->currentPhase = "Roll the dice step";
 			notify();
-			player.RollDice();
+			player.executeRollDice();
 
 			//2 resolve the dice (mandatory)
 			this->currentPhase = "Resolve the dice step";
 			notify();
-			player.ResolveDice();
+			player.executeResolveDice();
 			//3 move
 			this->currentPhase = "Move step";
 			notify();
-			player.move(map);
+			player.executeMove(map);
 			//4 buy card (optional)
 			this->currentPhase = "Buy cards step";
 			notify();
-			player.buyCards(deck);
+			player.executeBuyCards(deck);
 			
 			//5 turn
 			if (player.getMonster().getVictoryPoints() == 20) {

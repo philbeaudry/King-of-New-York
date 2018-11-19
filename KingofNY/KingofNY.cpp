@@ -52,25 +52,6 @@ int main() {
 
 	gameDriver.play(deck,gameMap);
 
-	//for individual demo purposes.
-
-	//Part 4 - Main game loop: roll the dice and resolve the dice
-	cout << endl << "Part 4 Demo : roll and resolve dice" << endl;
-	Player player2;
-	player2.RollDice();
-	player2.ResolveDice();
-
-	//Part 5 - Main game loop: Move
-	cout << endl << "Part 5 Demo : Move" << endl;
-	player2.move(gameDriver.gameMap);
-
-	//Demo Part 6 - Buy Cards
-	cout << endl << "Part 6 Demo: buy cards" << endl;
-	Player player3;
-	Deck deck2;
-
-	deck2.generateDeck();
-	player3.buyCards(deck);
 
 	return 0;
 	
