@@ -24,7 +24,6 @@ class Dice
 		void displayKeptValues();
 		void rerollAll();
 		void keepDice();
-		void diceDriver();
 		vector <string> getDiceValues();
 		vector <string> getValues();
 		bool isFull();

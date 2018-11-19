@@ -61,8 +61,27 @@ bool GameDriver::loadPlayers() {
 		cout << "Player " << i << ", what NAME would you like to use?" << endl;
 		string playerName = string();
 		cin >> playerName;
-		Player player = Player(new Human(), playerName);
-		
+    
+    cout << p.first << ", is what type of player?(human, agressive or moderate)" << endl;
+
+		string playerType;
+		cin >> playerType;
+		while (playerType != "human" && playerType != "agressive" && playerType != "moderate") {
+			cout << p.first << ", choose one of the following type (human, agressive or moderate)" << endl;
+			cin >> playerType;
+		}
+
+		Player player;
+		if (playerType == "human") {
+			player = Player(new Human(), p.first);
+		}
+		else if (playerType == "agressive") {
+			player = Player(new Agressive(), p.first);
+		}
+		else if (playerType == "moderate") {
+			player = Player(new Moderate(), p.first);
+		}
+	
 		player.chooseMonster(deck);
 		this->playerArray[i] = player;
 	}
@@ -104,7 +123,7 @@ void GameDriver::determineOrder() {
         return p2.second < p1.second || !(p1.second < p2.second) && p1.first < p2.first;
     };
 
-    std::set < std::pair<string, size_t>, decltype( cmp )> s(order.begin(), order.end(), cmp);
+    set<pair<string, size_t>, decltype(cmp)> s(order.begin(), order.end(), cmp);
 
 	cout << endl;
 	cout << "Game will proceed in the following order of turns:" << endl;

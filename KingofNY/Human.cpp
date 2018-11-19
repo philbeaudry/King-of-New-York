@@ -6,8 +6,46 @@ Human::Human(){}
 Human::~Human(){}
 
 //method called by player object to commence dice roll sequence
+//method for dice rolling up to 3 times
 void Human::RollDice() {
-	return dice.diceDriver();
+	int numOfDices;
+	int numOfRolls = 1;
+	string answer;
+	int diceSelection;
+	int rerollArray[6];
+
+	cout << "1st Roll: rolling dice...";
+	dice.firstRoll();
+	dice.keepDice();
+	dice.displayDiceValues();
+
+	while (numOfRolls < 3) {
+		if (dice.keepArray.size() < 6) {
+			cout << "Would you like to roll again (yes, no)?";
+			cin >> answer;
+			while (answer != "yes" && answer != "no" && answer != "Yes" && answer != "No") {
+				cout << "Invalid answer. Please enter yes or no: ";
+				cin >> answer;
+			}
+			if (answer == "yes" || answer == "Yes") {
+				dice.rerollDie();
+				numOfRolls++;
+				dice.keepDice();
+			}
+			else if (answer == "no" || answer == "No") {
+				cout << "OK! retaining previous roll";
+				break;
+			}
+			else {
+				cout << "Invalid answer, retaining previous roll.";
+				break;
+			}
+		}
+		else {
+			cout << "You have kept the maximum amount of dice for this turn!" << endl;
+			break;
+		}
+	}
 }
 
 //method that prompts the player for order of dice to be resolved
