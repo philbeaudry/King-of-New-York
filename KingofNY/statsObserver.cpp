@@ -18,14 +18,35 @@ void statsObserver::update() {
 }
 
 string statsObserver::buildBuilding(){
-	string building = "";
-	for (int y = 1; y <= 3; y++) {
-		for (int x = 1; x <= 10; x++) {
-			building += "*";
-		}
-		building += "\n";
+
+	vector<Player> players = driver->getPlayerArray();
+
+	string xlegend = "      ";
+	for (int i = 0; i < players.size(); i++) {
+		xlegend.append(players[i].getName());
+		xlegend.append("  ");
 	}
-	return building;
+
+	cout << "Victory Point Bar Graph" << endl;
+	string barGraphVictoryPoints = "";
+	for (int j = 20; j >= 0; j--) {
+		if (j >= 10) {
+			cout << j << "    ";
+		}
+		else {
+			cout << j << "     ";
+		}
+		for (Player player : players) {
+			if (player.getMonster().getVictoryPoints() >= j) {
+				cout << "***" << "  ";
+			}
+		}
+		cout << endl;
+	}
+
+	cout << xlegend << endl;
+
+	return barGraphVictoryPoints;
 }
 
 void statsObserver::printInfo(string cityName){
@@ -45,8 +66,8 @@ void statsObserver::printCity(){
 	cities.push_back("Manhattan Upper");
 	cities.push_back("Manhattan Midtown");
 
+	buildBuilding();
 	for (int i = 0; i < cities.size(); i++) {
-		cout << buildBuilding();
 		cout << cities[i] << endl;
 		printInfo(cities[i]);
 		cout << endl;
