@@ -4,7 +4,7 @@
 
 Monster::Monster()
 {
-	this->name = "";
+	this->name = "blabla";
 	this->lifePoints = 10;
 	this->victoryPoints = 0;
 }
