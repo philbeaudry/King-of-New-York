@@ -82,7 +82,6 @@ void GameDriver::startup() {
 }
 
 void GameDriver::determineOrder() {
-	this->playerArray;
 	map<string, int> order;
 	//6 black dice and the 2 green dice	
 	int nbAttack = 0;
@@ -113,8 +112,10 @@ void GameDriver::determineOrder() {
     for (const auto &p : s)
     {
         std::cout << p.first << " ";
-		Player player = Player(new Human(), p.first);
-		this->orderedPlayerArray.push_back(player);
+		for (int i = 0; i < this->playerArray.size(); i++) {
+			if (p.first == this->playerArray[i].getName()) {
+				this->orderedPlayerArray.push_back(playerArray[i]);
+			}
     }
 	cout << endl << endl;
 }
