@@ -167,6 +167,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="statsObserver.h" />
     <ClInclude Include="Strategy.h" />
+    <ClInclude Include="Subject.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Token.h" />
   </ItemGroup>
@@ -192,6 +193,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="statsObserver.cpp" />
     <ClCompile Include="Strategy.cpp" />
+    <ClCompile Include="Subject.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Token.cpp" />
   </ItemGroup>
