@@ -1,5 +1,6 @@
 #pragma once
-#include "observer.h"
+#include "Observer.h"
+#include "GameDriver.h"
 #include <iostream>
 #include <string>
 
@@ -9,5 +10,8 @@ public:
 	phaseObserver(GameDriver *gd);
 	~phaseObserver();
 	void update();
+
+private :
+		GameDriver *subject;
 };
 

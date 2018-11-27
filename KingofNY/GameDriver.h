@@ -12,15 +12,14 @@
 #include "Human.h"
 #include "Agressive.h"
 #include "Moderate.h"
+#include "Subject.h"
 
 using namespace std;
 
-class GameDriver
+class GameDriver : public Subject
 {
 public:
 	vector<class Observer*> observerList;
-	void attach(Observer *obs);
-	void notify();
 	int nbPlayers;
 	Player currentPlayer;
 	string currentPhase;

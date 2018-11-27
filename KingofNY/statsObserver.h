@@ -1,6 +1,7 @@
 #pragma once
 #include "Observer.h"
 #include "Player.h"
+#include "GameDriver.h"
 #include <map>
 #include <iostream>
 #include <string>
@@ -20,5 +21,8 @@ public:
 	void buildNY();
 	void printInfo(string);
 	void printCity();
+
+private:
+	GameDriver *subject;
 };
 

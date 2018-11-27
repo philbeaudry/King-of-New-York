@@ -1,9 +1,11 @@
 #include "pch.h"
 #include "statsObserver.h"
 #include "GameDriver.h"
-#include "Player.h"
 
-statsObserver::statsObserver(GameDriver *gd) : Observer(gd){
+
+statsObserver::statsObserver(GameDriver *gd){
+	subject = gd;
+	subject->Attach(this);
 }
 
 statsObserver::~statsObserver(){
@@ -19,7 +21,7 @@ void statsObserver::update() {
 
 string statsObserver::buildBuilding(){
 
-	vector<Player> players = driver->getPlayerArray();
+	vector<Player> players = subject->getPlayerArray();
 
 	string xlegend = "      ";
 	for (int i = 0; i < players.size(); i++) {
@@ -75,7 +77,7 @@ void statsObserver::printCity(){
 }
 void statsObserver::buildNY(){
 	
-	vector<Player> players = driver->getPlayerArray();
+	vector<Player> players = subject->getPlayerArray();
 
 	for (int i = 0; i < players.size(); i++) {
 		if (players[i].getRegion().name == "StatenIsland") {

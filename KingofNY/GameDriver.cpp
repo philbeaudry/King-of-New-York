@@ -11,15 +11,6 @@ GameDriver::~GameDriver() {
 }
 
 
-void GameDriver::attach(Observer *obs) {
-	observerList.push_back(obs);
-}
-
-void GameDriver::notify() {
-	for (int i = 0; i < observerList.size(); i++)
-		observerList[i]->update();	
-}
-
 bool GameDriver::selectMap(string file) {
 	this->gameMap = Map(file);
 
