@@ -4,8 +4,10 @@
 
 using namespace std;
 
-phaseObserver::phaseObserver(GameDriver *gd): Observer(gd)
+phaseObserver::phaseObserver(GameDriver *gd)
 {
+	subject = gd;
+	subject->Attach(this);
 }
 
 
@@ -15,8 +17,8 @@ phaseObserver::~phaseObserver()
 
 void phaseObserver::update() {
 	
-	string player = driver->currentPlayer.getName();
-	string phase = driver->currentPhase;
+	string player = subject->currentPlayer.getName();
+	string phase = subject->currentPhase;
 
 	cout << endl << endl;
 	cout << "============================";
