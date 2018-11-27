@@ -15,15 +15,6 @@ using namespace std;
 
 int main() {
 
-	//string building = "";
-	//for (int y = 1; y <= 5; y++) {
-	//	for (int x = 1; x <= 5; x++) {
-	//		building += "*";
-	//	}
-	//	building += "\n";
-	//}
-	//building += "hello";
-	//cout << building;
 
 	srand(time(NULL));
 
