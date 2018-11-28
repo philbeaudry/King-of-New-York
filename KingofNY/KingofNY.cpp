@@ -10,6 +10,7 @@
 #include "GameDriver.h"
 #include "phaseObserver.h"
 #include "statsObserver.h"
+#include "DiceObserver.h"
 
 using namespace std;
 
@@ -40,6 +41,12 @@ int main() {
 	//Demo part 3 -- main game loop
 	Map gameMap = gameDriver.getMap();
 
+	//for (int i = 0; i < gameDriver.getPlayerArray().size(); i++) {
+	//	Dice dice1 = gameDriver.getPlayerArray()[i].getDice();
+	//	DiceObserver diceObs(&dice1);
+	//}
+	Dice dice1 = gameDriver.getPlayerArray()[0].getDice();
+	DiceObserver diceObs(&dice1);
 	gameDriver.play(deck,gameMap);
 
 	return 0;

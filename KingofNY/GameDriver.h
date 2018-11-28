@@ -19,7 +19,6 @@ using namespace std;
 class GameDriver : public Subject
 {
 public:
-	vector<class Observer*> observerList;
 	int nbPlayers;
 	Player currentPlayer;
 	string currentPhase;

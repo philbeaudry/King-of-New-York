@@ -13,8 +13,8 @@ protected:
 	vector <Card> cards;
 	vector <Token> tokens;
 	Node region;
-	Dice dice;
 	Monster monsterCard;
+	Dice dice;
 public:
 	//Strategy will change with the types of players
 	virtual void RollDice();

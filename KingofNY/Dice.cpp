@@ -69,18 +69,18 @@ void Dice::rerollAll() {
 		int random = (rand() % 6) + 1;
 		valueArray[i] = numToValue(random);
 	}
-	displayDiceValues();
+	notify();
 }
 //initial roll of the dice
 void Dice::firstRoll() {
+	cout << "First Roll: ";
 	this->valueArray.clear();
 	this->keepArray.clear();
 	for (int i = 0; i < 6 ; i++) {
 		int random = (rand() % 6) + 1;
 		this->valueArray.push_back(numToValue(random));
-		cout << endl;
-		cout << "Dice #" << i +1 << ": " << valueArray[i] << endl;
 	}
+	notify();
 }
 
 void Dice::startRoll(){
@@ -99,9 +99,6 @@ void Dice:: rollDie(int diceNumber[], int arraySize) {
 		int random = (rand() % 6) + 1;
 		valueArray[diceNumber[i] - 1] = numToValue(random);
 	}
-	cout << "new dice values are:" << endl;
-	displayDiceValues();
-
 };
 
 //method that handles dice rerolling
@@ -173,5 +170,6 @@ void Dice::keepDice() {
 			this->keepArray.push_back(valueArray[keepSelection - 1]);
 		}
 	}
+	notify();
 }
 

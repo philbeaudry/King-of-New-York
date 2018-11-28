@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "GameDriver.h"
+#include "DiceObserver.h"
 #include <vector>
 
 using namespace std;
