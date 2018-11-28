@@ -2,7 +2,6 @@
 #include "Subject.h"
 #include "Observer.h"
 
-
 Subject::Subject(){
 	_observer = new list<Observer*>;
 }

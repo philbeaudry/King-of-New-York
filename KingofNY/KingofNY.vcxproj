@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CardObserver.h" />
     <ClInclude Include="Moderate.h" />
     <ClInclude Include="Agressive.h" />
     <ClInclude Include="Card.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Token.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CardObserver.cpp" />
     <ClCompile Include="Moderate.cpp" />
     <ClCompile Include="Agressive.cpp" />
     <ClCompile Include="Card.cpp" />
