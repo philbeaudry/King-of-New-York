@@ -37,6 +37,11 @@ string Player::getName() {
 	return this->strategy->getName();
 }
 
+Dice Player::getDice()
+{
+	return this->strategy->getDice();
+}
+
 void Player::startRoll() {
 	this->strategy->startRoll();
 }

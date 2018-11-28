@@ -14,10 +14,9 @@ void Human::RollDice() {
 	int diceSelection;
 	int rerollArray[6];
 
-	cout << "1st Roll: rolling dice...";
 	dice.firstRoll();
 	dice.keepDice();
-	dice.displayDiceValues();
+	
 
 	while (numOfRolls < 3) {
 		if (dice.keepArray.size() < 6) {

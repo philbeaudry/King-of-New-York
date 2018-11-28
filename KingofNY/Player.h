@@ -36,6 +36,7 @@ public:
 
 	//calls the strategy class, but are defined in the stragegy since they are the same no matter the type
 	string getName();
+	Dice getDice();
 	void startRoll();
 	void chooseRegion(Map &map);
 	Node getRegion();
