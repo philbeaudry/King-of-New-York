@@ -18,6 +18,7 @@ void DiceObserver::update()
 	cout << "Values for this roll: " << endl;
 	subject->displayDiceValues();
 	cout << "Values kept during this turn so far: " << endl;
+	subject->keepArray;
 	subject->displayKeptValues();
 
 }

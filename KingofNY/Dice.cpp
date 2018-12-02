@@ -69,7 +69,6 @@ void Dice::rerollAll() {
 		int random = (rand() % 6) + 1;
 		valueArray[i] = numToValue(random);
 	}
-	notify();
 }
 //initial roll of the dice
 void Dice::firstRoll() {
@@ -84,7 +83,7 @@ void Dice::firstRoll() {
 }
 
 void Dice::startRoll(){
-	for (int i = 0; i < 8; i++) {
+	for (int i = 0; i < 6; i++) {
 		int random = (rand() % 6) + 1;
 		this->valueArray.push_back(numToValue(random));
 		cout << endl;
