@@ -34,6 +34,14 @@ int Monster::getlifePoints()
 	return this->lifePoints;
 }
 
+void Monster::incrementVictoryPoint(){
+	this->victoryPoints++;
+}
+
+void Monster::decrementVictoryPoint(){
+	this->victoryPoints--;
+}
+
 void Monster::modifyLifePoints(string change, int amount)
 {
 	if (change == "increase") {

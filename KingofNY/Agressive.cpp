@@ -132,6 +132,7 @@ void Agressive::move(Map & map) {
 			map.graph.setNbOfPlayersInZone(this->region.id, --currentSize);
 
 			this->region = positions[0];
+			this->monsterCard.incrementVictoryPoint();
 
 			//add to the player count of the ZONE
 			currentSize = map.graph.getNbOfPlayersInZone(this->region.id);
@@ -148,6 +149,7 @@ void Agressive::move(Map & map) {
 
 		this->region = positions[0];
 		map.graph.setNbOfPlayersInManhattan(1);
+		this->monsterCard.incrementVictoryPoint();
 	}
 	else {
 		//removing player from current position

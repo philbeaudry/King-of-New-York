@@ -14,6 +14,8 @@ class Monster
 		string getName();
 		int getVictoryPoints();
 		int getlifePoints();
+		void incrementVictoryPoint();
+		void decrementVictoryPoint();
 		void modifyLifePoints(string,int);
 		void modifyVictoryPoints(string,int);
 

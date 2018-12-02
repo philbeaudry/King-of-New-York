@@ -135,6 +135,7 @@ void Human::move(Map &map) {
 			map.graph.setNbOfPlayersInZone(this->region.id, --currentSize);
 
 			this->region = positions[0];
+			this->monsterCard.incrementVictoryPoint();
 
 			//add to the player count of the ZONE
 			currentSize = map.graph.getNbOfPlayersInZone(this->region.id);
@@ -151,6 +152,7 @@ void Human::move(Map &map) {
 
 		this->region = positions[0];
 		map.graph.setNbOfPlayersInManhattan(1);
+		this->monsterCard.incrementVictoryPoint();
 	}
 	else {
 		cout << "Would like to move to another borough? (yes or no): " << endl;
