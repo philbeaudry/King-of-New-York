@@ -7,7 +7,7 @@
 class Strategy {
 
 protected:
-	int energyCount;
+	int energyCount = 50;
 	bool superstar;
 	string playerName;
 	vector <Card> cards;

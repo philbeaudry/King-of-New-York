@@ -25,6 +25,16 @@ int Card::getCost() {
 	return this->cost;
 }
 
+string Card::getHow()
+{
+	return this->howToPlay;
+}
+
+string Card::getEffect()
+{
+	return this->effect;
+}
+
 //constructor with name param
 Card::Card(string cardName)
 {

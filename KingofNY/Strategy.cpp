@@ -221,6 +221,10 @@ void Strategy::buyCard(Deck &deck, Card card, int i) {
 		cout << "You do not have enough energy to buy this card!";
 	}
 	else {
+		card.notify();
+		cout << "Card name: " << card.getName() << endl;
+		cout << "Card cost: " << card.getCost() << endl;
+		cout << "Card effect: " << card.getEffect() << endl;
 		this->energyCount -= card.getCost();
 		deck.removeCard(i);
 		deck.drawCard();

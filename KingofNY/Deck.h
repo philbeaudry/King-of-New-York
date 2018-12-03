@@ -3,6 +3,7 @@
 #include "Monster.h"
 #include "Token.h"
 #include "Tile.h"
+#include "CardObserver.h"
 #include <iostream>
 #include <string>
 #include <vector>

@@ -18,6 +18,6 @@ void CardObserver::update() {
 }
 
 void CardObserver::display() {
-	string name = _subject->getName();
-	cout << "Info about card: " + name;
+	cout << "Info about card: " + _subject->getName();
+	cout << "Cost: " + _subject->getCost();
 }

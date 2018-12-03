@@ -17,28 +17,40 @@ void Deck::generateDeck() {
 
 	Card violentStar = Card("Violent Star",3,"keep");
 	cardDeck.push_back(violentStar);
+	CardObserver cardObs(&violentStar);
 	Card sharpShooter = Card("Sharp Shooter", 4, "keep");
 	cardDeck.push_back(sharpShooter);
+	CardObserver cardObs1(&sharpShooter);
 	Card otherWorld = Card("Of Another World", 6, "keep");
 	cardDeck.push_back(otherWorld);
+	CardObserver cardObs2(&otherWorld);
 	Card extraHead = Card("Extra Head", 7, "keep");
 	cardDeck.push_back(extraHead);
+	CardObserver cardObs3(&extraHead);
 	Card egoTrap = Card("Ego Trap", 3, "keep");
 	cardDeck.push_back(egoTrap);
+	CardObserver cardObs4(&egoTrap);
 	Card hailingCabs = Card("Hailing Cabs", 5, "keep");
 	cardDeck.push_back(hailingCabs);
+	CardObserver cardObs5(&hailingCabs);
 	Card nextStage = Card("Next Stage", 4, "discard");
 	cardDeck.push_back(nextStage);
+	CardObserver cardObs6(&nextStage);
 	Card powerSub = Card("Power Substation", 5, "discard");
 	cardDeck.push_back(powerSub);
+	CardObserver cardObs7(&powerSub);
 	Card generalEllis = Card("General Ellis", 5, "discard");
 	cardDeck.push_back(generalEllis);
+	CardObserver cardObs8(&generalEllis);
 	Card nyMarathon = Card("New York Marathon", 6, "discard");
 	cardDeck.push_back(nyMarathon);
+	CardObserver cardObs9(&nyMarathon);
 	Card airFroceOne = Card("Air Force One", 6, "discard");
 	cardDeck.push_back(airFroceOne);
+	CardObserver cardObs10(&airFroceOne);
 	Card subway = Card("Subway", 10, "discard");
 	cardDeck.push_back(subway);
+	CardObserver cardObs11(&subway);
 
 	shuffleDeck();
 	for (int i = 0; i < 3; i++) {
